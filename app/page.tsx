@@ -47,7 +47,7 @@ const PORTFOLIO_DATA = {
     {
       id: 1,
       title: "Meta Ads Ecosystem",
-      desc: "Scaling brands with advanced CBO. Achieving 5x-30x ROAS with highly optimized CPP across FMCG, Heritage, and Fashion sectors.",
+      desc: "Scaling brands with advanced CBO. Achieving 5x-30x ROAS with highly optimized CPP across Fragrances, Premium Gifting, Apparel, F&B (Dates, Honey, Coffee), Cosmetics, and Islamic Heritage sectors.",
       icon: <BarChart3 className="text-blue-600 mb-4" size={32} />,
       wide: true,
       bgGraphic: <TrendingUp size={200} className="text-blue-50" />
@@ -63,7 +63,7 @@ const PORTFOLIO_DATA = {
     {
       id: 3,
       title: "Business Automation",
-      desc: "Zero-latency order syncing via Google Sheets & Cloudflare.",
+      desc: "Zero-latency order syncing via Google Sheets.",
       icon: <Database className="text-blue-600 mb-4" size={32} />,
       stat: "100%",
       statLabel: "Automated Workflows"
