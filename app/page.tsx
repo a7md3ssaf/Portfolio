@@ -29,7 +29,7 @@ const PORTFOLIO_DATA = {
     whatsapp: "https://wa.me/201551441247" // نفس رقم الواتساب
   },
   hero: {
-    photoPlaceholder: "/Ahmed Assaf.jpg",
+    photoPlaceholder: "/Ahmed Assaf.jpeg",
     greeting: "Hi, I'm Ahmed Assaf 👋",
     headlineStart: "Architecting ",
     headlineHighlight: "Ecommerce Growth.",
