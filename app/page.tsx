@@ -76,18 +76,23 @@ const PORTFOLIO_DATA = {
     { icon: <Zap size={24} />, title: "3. CRO Features", desc: "Deploying FBT, Sticky Buy Buttons, and urgency timers to maximize order value." },
     { icon: <Rocket size={24} />, title: "4. Ads & Scale", desc: "Driving qualified traffic through data-driven Meta Ads and scaling vertically." }
   ],
+  // 👇 قسم آراء العملاء بعد إضافة دعم السكرين شوتس 👇
   testimonials: [
     {
       name: "Founder of Torath",
       role: "Premium Islamic Heritage",
       content: "أحمد نقل البراند في حتة تانية خالص. بفضل استراتيجيته في الإعلانات وتعديلاته البرمجية على المتجر، قدرنا نوصل لمبيعات تجاوزت 7 مليون جنيه وعائد إعلاني (ROAS) كسر الـ 20x. شخص محترف وفاهم شغله جداً.",
-      isArabic: true
+      isArabic: true,
+      // حط مسار السكرين شوت هنا (ارفعها في فولدر public)
+      imagePath: "/review-torath.png" 
     },
     {
       name: "Marketing Director",
       role: "Emirates Perfumes",
       content: "Working with Ahmed was a game-changer. His custom bundle builder UX combined with aggressive Meta Ads scaling pushed our AOV to record highs. Highly recommended for any serious e-com brand.",
-      isArabic: false
+      isArabic: false,
+      // حط مسار السكرين شوت هنا
+      imagePath: "/review-emirates.png" 
     }
   ],
   caseStudies: {
@@ -122,7 +127,6 @@ const PORTFOLIO_DATA = {
         imagePath: "/emirates-ads.png" 
       }
     ],
-    // 👇 تم إضافة كل المواقع الـ 7 هنا مع ميزات برمجية مختلفة 👇
     development: [
       {
         id: "torath-dev",
@@ -440,7 +444,6 @@ export default function Portfolio() {
             {activeTab === 'development' && (
               <motion.div key="development" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }} className="space-y-8">
                 
-                {/* 👇 قسم الـ Arsenal (الترسانة) اللي بيعرض المميزات بتاعتك بشكل احترافي 👇 */}
                 <div className="bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 mb-12 shadow-2xl">
                   <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2" dir="auto">
                     <Code className="text-emerald-500" size={24} /> Development Arsenal & CRO Features
@@ -454,7 +457,6 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* عرض الـ 7 متاجر */}
                 {PORTFOLIO_DATA.caseStudies.development.map((study) => (
                   <div key={study.id} className="bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 md:p-12 flex flex-col lg:flex-row gap-12 items-center shadow-2xl">
                     <div className="w-full lg:w-1/2">
@@ -511,7 +513,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* TESTIMONIALS SECTION */}
+      {/* 👇 TESTIMONIALS SECTION (UPDATED FOR SCREENSHOTS) 👇 */}
       <section className="py-24 px-6 max-w-7xl mx-auto border-t border-white/5 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-900/10 via-transparent to-transparent relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-black text-white mb-4" dir="auto">Client Success</h2>
@@ -519,14 +521,32 @@ export default function Portfolio() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {PORTFOLIO_DATA.testimonials.map((test, idx) => (
-            <div key={idx} className="bg-white/[0.02] backdrop-blur-md p-10 rounded-3xl border border-white/5 flex flex-col justify-between shadow-xl">
-              <div>
-                <Quote className="text-white/10 mb-6" size={40} />
-                <p className={`text-lg text-gray-300 mb-8 leading-relaxed ${test.isArabic ? 'font-medium' : ''}`} dir="auto">
-                  "{test.content}"
-                </p>
-              </div>
-              <div className="flex items-center gap-4">
+            <div key={idx} className="bg-white/[0.02] backdrop-blur-md p-8 rounded-3xl border border-white/5 flex flex-col justify-between shadow-xl group hover:border-white/20 transition-all">
+              
+              {/* Screenshot or Text */}
+              {test.imagePath ? (
+                <div className="w-full h-64 md:h-72 mb-8 rounded-2xl overflow-hidden bg-black/20 flex items-center justify-center border border-white/5 relative">
+                  <img 
+                    src={test.imagePath} 
+                    alt={`Review from ${test.name}`} 
+                    className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity group-hover:scale-[1.02] duration-500" 
+                    onError={(e) => { 
+                      e.currentTarget.style.display = 'none'; 
+                      e.currentTarget.parentElement!.innerHTML = `<span class="text-sm font-mono text-gray-500">Image not found: ${test.imagePath}</span>`;
+                    }} 
+                  />
+                </div>
+              ) : (
+                <div className="mb-8">
+                  <Quote className="text-white/10 mb-6" size={40} />
+                  <p className={`text-lg text-gray-300 leading-relaxed ${test.isArabic ? 'font-medium' : ''}`} dir="auto">
+                    "{test.content}"
+                  </p>
+                </div>
+              )}
+
+              {/* Client Info */}
+              <div className="flex items-center gap-4 mt-auto border-t border-white/5 pt-6">
                 <div className="w-12 h-12 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-500 font-bold border border-emerald-500/20">
                   {test.name.charAt(0)}
                 </div>
