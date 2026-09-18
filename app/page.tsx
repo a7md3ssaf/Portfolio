@@ -6,7 +6,7 @@ import {
   BarChart3, ShoppingCart, 
   Play, ArrowRight, Download, MessageCircle, 
   CheckCircle2, ExternalLink, Image as ImageIcon, Video,
-  Star, Quote, Zap, Code, TrendingUp, Search, Settings, Rocket
+  Quote, Zap, Code, TrendingUp, Search, Settings, Rocket, LayoutTemplate
 } from "lucide-react";
 
 // ==========================================
@@ -22,7 +22,7 @@ const PORTFOLIO_DATA = {
     photo: "/Ahmed.jpeg",
     titleStart: "Shopify Stores ",
     titleEnd: "That Scale.",
-    subtitle: "I design, develop, and grow Shopify brands through high-converting stores and data-driven Meta ads."
+    subtitle: "I build fast, high-converting Shopify stores using Custom Code & tailored UI/UX, combined with data-driven Meta Ads for maximum ROAS."
   },
   contact: {
     whatsapp: "https://wa.me/201551441247",
@@ -34,46 +34,47 @@ const PORTFOLIO_DATA = {
     whatsapp: "https://wa.me/201551441247"
   },
   brands: [
-    { name: "TŌRATH", url: "https://torath.xyz" },
-    { name: "Asia Dates", url: "https://asia-dates.org" },
-    { name: "Outlet 90", url: "#" },
+    { name: "TŌRATH", url: "https://torath.co" },
     { name: "Emirates Perfumes", url: "https://emirates-perfumes.com" },
-    { name: "Perfume Palace", url: "https://perfume-palace.com" },
-    { name: "Freezy Bites", url: "#" }
+    { name: "Orvan Perfumes", url: "https://orvan-perfumes.com" },
+    { name: "Freezy Bites", url: "https://freezybites.store" },
+    { name: "Oplus Coffee", url: "https://opluscoffee.com/" },
+    { name: "Art Expo", url: "https://artexpo.art" },
+    { name: "New Rayan", url: "https://newrayanpharmacy.com" }
   ],
   stats: [
-    { value: "10+", label: "Brands Worked On" },
+    { value: "10+", label: "Brands Scaled" },
     { value: "11M+", label: "Tracked Revenue (EGP)" },
-    { value: "30x", label: "Best ROAS Achieved" },
-    { value: "100%", label: "Focus on Results" }
+    { value: "Custom", label: "UI/UX & Code" },
+    { value: "100%", label: "Conversion Focused" }
   ],
   services: [
+    {
+      icon: <Code className="text-blue-400" size={32} />,
+      title: "Custom Shopify Dev",
+      desc: "Building highly tailored stores using Custom Liquid, CSS, and JS. I don't just set up themes; I code seamless user journeys matched with your brand identity."
+    },
+    {
+      icon: <Zap className="text-yellow-400" size={32} />,
+      title: "Conversion (CRO)",
+      desc: "Optimizing the full funnel from landing to checkout. Implementing Sticky ATCs, FBTs, Free Shipping Bars, and Trust Badges to push CVR."
+    },
     {
       icon: <TrendingUp className="text-emerald-400" size={32} />,
       title: "Performance Marketing",
       desc: "Aggressive Meta Ads scaling with advanced CBO/ABO structures, dynamic creatives, and hyper-targeted audience testing."
     },
     {
-      icon: <Code className="text-blue-400" size={32} />,
-      title: "Custom Shopify Dev",
-      desc: "Writing clean Liquid, CSS, and JS to build custom bundle builders, sticky ATCs, and dynamic variant galleries."
-    },
-    {
-      icon: <Zap className="text-yellow-400" size={32} />,
-      title: "Conversion (CRO)",
-      desc: "Designing mobile-first Arabic UX flows, urgency timers, and trust-driven UI to push conversion rates up to 5.8%."
-    },
-    {
       icon: <Settings className="text-purple-400" size={32} />,
-      title: "Workflow Automation",
-      desc: "Zero-latency integrations connecting Shopify to Google Sheets and fulfillment centers via Cloudflare Workers."
+      title: "Performance Optimization",
+      desc: "Speed optimization and Zero-latency integrations connecting Shopify to backend workflows for a fast, friction-free experience."
     }
   ],
   process: [
     { icon: <Search size={24} />, title: "1. Deep Audit", desc: "We analyze your store's UX, current ad accounts, and backend data to find leaks." },
-    { icon: <Settings size={24} />, title: "2. Strategy & UX", desc: "Implementing conversion tweaks, bundle offers, and fixing the Arabic user journey." },
-    { icon: <TrendingUp size={24} />, title: "3. Media Buying", desc: "Deploying data-driven Meta Ads with aggressive creative testing to find winning angles." },
-    { icon: <Rocket size={24} />, title: "4. Scale", desc: "Once profitable CPP is achieved, we scale budgets vertically and horizontally." }
+    { icon: <LayoutTemplate size={24} />, title: "2. Custom UI/UX", desc: "Designing and coding tailored sections that fit your brand and simplify the user journey." },
+    { icon: <Zap size={24} />, title: "3. CRO Features", desc: "Deploying FBT, Sticky Buy Buttons, and urgency timers to maximize order value." },
+    { icon: <Rocket size={24} />, title: "4. Ads & Scale", desc: "Driving qualified traffic through data-driven Meta Ads and scaling vertically." }
   ],
   testimonials: [
     {
@@ -96,7 +97,7 @@ const PORTFOLIO_DATA = {
         title: "TŌRATH",
         subtitle: "Performance Marketing Case Study",
         desc: "Scaling a premium Quran holder brand through Meta Ads. From zero to orders, we scaled Torath using strategic creatives, audience testing, and continuous optimization.",
-        url: "https://torath.xyz",
+        url: "https://torath.co",
         metrics: [
           { value: "10x - 30x", label: "ROAS" },
           { value: "EGP 7.2M+", label: "Revenue" },
@@ -121,37 +122,99 @@ const PORTFOLIO_DATA = {
         imagePath: "/emirates-ads.png" 
       }
     ],
+    // 👇 تم إضافة كل المواقع الـ 7 هنا مع ميزات برمجية مختلفة 👇
     development: [
       {
         id: "torath-dev",
         title: "TŌRATH",
-        subtitle: "Shopify Development Case Study",
-        desc: "A premium, high-converting store with custom Arabic UX features.",
-        url: "https://torath.xyz",
+        subtitle: "Premium Heritage Store",
+        desc: "A fully custom, high-converting Arabic UX designed for seamless purchasing and premium branding.",
+        url: "https://torath.co",
         features: [
-          { title: "Dynamic Variant Gallery", desc: "Variant-specific images (mobile & desktop)" },
-          { title: "Sticky Buy Bar", desc: "Always visible, mobile optimized" },
-          { title: "Direct Checkout", desc: "Buy Now -> Checkout (fewer steps)" },
-          { title: "Zero-Latency Automation", desc: "Google Sheets & EasyOrders Sync" },
-          { title: "Mobile-First Design", desc: "Fully responsive, fast, and smooth" }
+          { title: "Custom UI/UX", desc: "Tailored brand identity matching." },
+          { title: "Sticky Add to Cart", desc: "Always visible on mobile to drive conversions." },
+          { title: "Conversion Optimization", desc: "Direct checkout flows with fewer steps." }
         ],
-        // مسار الفيديو الجديد
         videoUrl: "/torath-demo.mp4",
         imagePath: "/torath-mockup.png"
       },
       {
-        id: "asia-dev",
-        title: "Asia Dates",
-        subtitle: "Custom Arabic UX & Automation",
-        desc: "Designed custom Arabic UX flows with Free Shipping countdown timers and animated UI.",
-        url: "https://asia-dates.org",
+        id: "emirates-dev",
+        title: "Emirates Perfumes",
+        subtitle: "Fragrance & Gifting",
+        desc: "Developed interactive bundle builders and dynamic variant selections to maximize AOV.",
+        url: "https://emirates-perfumes.com",
         features: [
-          { title: "Custom Bundle Builder", desc: "Interactive selection for Sukkary + Rutab" },
-          { title: "Urgency Timers", desc: "Free Shipping countdown & Trust Badges" },
-          { title: "Google Sheets Sync", desc: "Automated real-time order routing" }
+          { title: "Frequently Bought Together", desc: "Custom FBT sections to increase order value." },
+          { title: "Countdown Timers", desc: "Urgency elements perfectly integrated into the UI." },
+          { title: "Optional Products", desc: "Upsell items embedded directly inside the cart." }
         ],
-        videoUrl: "", 
-        imagePath: "/asia-mockup.png"
+        imagePath: "/emirates-mockup.png"
+      },
+      {
+        id: "orvan-dev",
+        title: "Orvan Perfumes",
+        subtitle: "Luxury Fragrances",
+        desc: "A visually rich, fast-loading store prioritizing product aesthetics and smooth mobile experience.",
+        url: "https://orvan-perfumes.com",
+        features: [
+          { title: "Interactive Sections", desc: "Smooth animations and custom product galleries." },
+          { title: "Trust Badges", desc: "Strategically placed to build instant credibility." },
+          { title: "Performance Optimization", desc: "Lazy loading and script optimization for speed." }
+        ],
+        imagePath: "/orvan-mockup.png"
+      },
+      {
+        id: "freezy-dev",
+        title: "Freezy Bites",
+        subtitle: "FMCG / Snacks",
+        desc: "A vibrant, engaging store designed for quick impulse buys and bulk orders.",
+        url: "https://freezybites.store",
+        features: [
+          { title: "Free Shipping Bar", desc: "Dynamic progress bar to encourage higher cart totals." },
+          { title: "Sticky Add to Cart", desc: "Frictionless mobile purchasing." },
+          { title: "Custom Cart Drawer", desc: "AJAX-powered cart with integrated upsells." }
+        ],
+        imagePath: "/freezy-mockup.png"
+      },
+      {
+        id: "oplus-dev",
+        title: "Oplus Coffee",
+        subtitle: "Premium Coffee Roasters",
+        desc: "An immersive e-commerce experience focusing on coffee origin stories and subscription-style bundles.",
+        url: "https://opluscoffee.com/",
+        features: [
+          { title: "Tailored UI/UX", desc: "Dark, premium aesthetic perfectly matched to the brand." },
+          { title: "Frequently Bought Together", desc: "Pairing coffee beans with equipment." },
+          { title: "Conversion Optimization", desc: "Streamlined navigation and quick-buy features." }
+        ],
+        imagePath: "/oplus-mockup.png"
+      },
+      {
+        id: "artexpo-dev",
+        title: "Art Expo",
+        subtitle: "Art & Decor",
+        desc: "A minimalist gallery-style store that lets the artwork stand out, built for lightning-fast speeds.",
+        url: "https://artexpo.art",
+        features: [
+          { title: "Performance Optimization", desc: "Handling high-res imagery without sacrificing speed." },
+          { title: "Interactive Sections", desc: "Custom grid layouts and hover effects." },
+          { title: "Trust Badges", desc: "Secure checkout indicators." }
+        ],
+        imagePath: "/artexpo-mockup.png"
+      },
+      {
+        id: "rayan-dev",
+        title: "New Rayan Pharmacy",
+        subtitle: "Health & Care",
+        desc: "A robust, highly-categorized pharmacy store focusing on searchability and massive product catalogs.",
+        url: "https://newrayanpharmacy.com",
+        features: [
+          { title: "Advanced Search & Filters", desc: "Custom Liquid coding for fast product discovery." },
+          { title: "Optional Products inside Cart", desc: "Relevant medical/cosmetic cross-sells." },
+          { title: "Free Shipping Bar", desc: "Incentivizing larger pharmacy orders." }
+        ],
+        imagePath: "/rayan-mockup.png"
       }
     ]
   }
@@ -164,15 +227,10 @@ const PORTFOLIO_DATA = {
 const MobileMockup = ({ url, imagePath, videoUrl }: { url: string, imagePath?: string, videoUrl?: string }) => {
   return (
     <div className="flex flex-col items-center justify-center gap-8 w-full">
-      
-      {/* 📱 Phone Container 📱 */}
       <div className="relative w-[280px] h-[580px] bg-[#0A0A0F] border-[8px] border-[#1A1A24] rounded-[3rem] shadow-2xl flex items-center justify-center overflow-hidden ring-1 ring-white/10 group">
-        
-        {/* Fake iOS Notch for premium look */}
         <div className="absolute top-0 inset-x-0 h-6 bg-[#1A1A24] w-[40%] mx-auto rounded-b-2xl z-20 shadow-sm"></div>
 
         {videoUrl ? (
-          /* Video Player with controls */
           <video 
             src={videoUrl} 
             controls
@@ -183,26 +241,23 @@ const MobileMockup = ({ url, imagePath, videoUrl }: { url: string, imagePath?: s
             className="w-full h-full object-cover z-10" 
           />
         ) : imagePath ? (
-          /* Fallback Image */
           <img 
             src={imagePath} 
             alt="Store Preview" 
             className="w-full h-full object-cover object-top z-10" 
+            onError={(e) => { e.currentTarget.style.display = 'none'; }}
           />
         ) : (
-          /* Empty State */
-          <div className="flex flex-col items-center justify-center text-white/20 p-6 z-10">
-             <Video size={48} className="mb-4 opacity-50" />
-             <span className="text-sm font-mono text-center">Add .mp4 to public folder</span>
+          <div className="flex flex-col items-center justify-center text-white/20 p-6 z-10 text-center">
+             <ImageIcon size={40} className="mb-4 opacity-50" />
+             <span className="text-xs font-mono">Upload Image:<br/>{imagePath}</span>
           </div>
         )}
       </div>
 
-      {/* 🟢 View Live Store Button 🟢 */}
       <a href={url} target="_blank" rel="noopener noreferrer" className="bg-emerald-500 text-black px-10 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_30px_rgba(16,185,129,0.2)] hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] hover:-translate-y-1">
         View Live Store <ExternalLink size={18} />
       </a>
-
     </div>
   );
 };
@@ -331,6 +386,7 @@ export default function Portfolio() {
         <div className="space-y-12">
           <AnimatePresence mode="wait">
             
+            {/* 🔴 PERFORMANCE TAB 🔴 */}
             {activeTab === 'performance' && (
               <motion.div key="performance" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }} className="space-y-8">
                 {PORTFOLIO_DATA.caseStudies.performance.map((study) => (
@@ -380,8 +436,25 @@ export default function Portfolio() {
               </motion.div>
             )}
 
+            {/* 🟢 DEVELOPMENT TAB 🟢 */}
             {activeTab === 'development' && (
               <motion.div key="development" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }} className="space-y-8">
+                
+                {/* 👇 قسم الـ Arsenal (الترسانة) اللي بيعرض المميزات بتاعتك بشكل احترافي 👇 */}
+                <div className="bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 mb-12 shadow-2xl">
+                  <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2" dir="auto">
+                    <Code className="text-emerald-500" size={24} /> Development Arsenal & CRO Features
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    {['Sticky Add to Cart', 'Frequently Bought Together (FBT)', 'Countdown Timers', 'Free Shipping Bar', 'Optional Products in Cart', 'Interactive Sections', 'Trust Badges', 'Custom UI/UX', 'Performance Optimization'].map((feat, i) => (
+                      <span key={i} className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-5 py-2.5 rounded-full text-sm font-bold shadow-sm" dir="auto">
+                        {feat}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* عرض الـ 7 متاجر */}
                 {PORTFOLIO_DATA.caseStudies.development.map((study) => (
                   <div key={study.id} className="bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 md:p-12 flex flex-col lg:flex-row gap-12 items-center shadow-2xl">
                     <div className="w-full lg:w-1/2">
@@ -395,7 +468,7 @@ export default function Portfolio() {
                       <p className="text-gray-400 mb-8 leading-relaxed text-lg" dir="auto">{study.desc}</p>
                       
                       <div className="space-y-6">
-                        <div className="text-sm font-bold text-white border-b border-white/10 pb-4">Features & Tech Stack</div>
+                        <div className="text-sm font-bold text-white border-b border-white/10 pb-4">Features Implemented</div>
                         {study.features.map((feature, i) => (
                           <div key={i} className="group cursor-default">
                             <div className="text-white font-bold mb-1 flex items-center gap-2" dir="auto">
@@ -407,7 +480,6 @@ export default function Portfolio() {
                       </div>
                     </div>
                     
-                    {/* الموبايل والفيديو هيظهروا في الجزء ده */}
                     <div className="w-full lg:w-1/2 flex justify-center mt-10 lg:mt-0">
                        <MobileMockup url={study.url} imagePath={study.imagePath} videoUrl={study.videoUrl} />
                     </div>
@@ -525,7 +597,7 @@ export default function Portfolio() {
           100% { transform: translateX(-50%); }
         }
         .animate-marquee {
-          animation: marquee 30s linear infinite;
+          animation: marquee 35s linear infinite;
           width: max-content;
         }
         .animate-marquee:hover {
