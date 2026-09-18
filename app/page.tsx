@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   BarChart3, ShoppingCart, Monitor, Smartphone, Tablet, 
-  Play, ArrowRight, Download, Facebook, Instagram, MessageCircle, 
+  Play, ArrowRight, Download, MessageCircle, 
   CheckCircle2, ExternalLink
 } from "lucide-react";
 
@@ -355,9 +355,15 @@ export default function Portfolio() {
             <span className="text-xs text-gray-600">© {new Date().getFullYear()} All rights reserved.</span>
           </div>
           <div className="flex gap-6">
-            <a href={PORTFOLIO_DATA.socials.facebook} className="text-gray-500 hover:text-white transition-colors"><Facebook size={20} /></a>
-            <a href={PORTFOLIO_DATA.socials.instagram} className="text-gray-500 hover:text-white transition-colors"><Instagram size={20} /></a>
-            <a href={PORTFOLIO_DATA.socials.whatsapp} className="text-gray-500 hover:text-white transition-colors"><MessageCircle size={20} /></a>
+            <a href={PORTFOLIO_DATA.socials.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href={PORTFOLIO_DATA.socials.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+            <a href={PORTFOLIO_DATA.socials.whatsapp} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors" aria-label="WhatsApp">
+              <MessageCircle size={20} />
+            </a>
           </div>
         </div>
       </footer>
