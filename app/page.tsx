@@ -6,7 +6,7 @@ import {
   BarChart3, ShoppingCart, Monitor, Smartphone, Tablet, 
   Play, ArrowRight, Download, MessageCircle, 
   CheckCircle2, ExternalLink, Image as ImageIcon,
-  Star, Quote, Zap, Code, TrendingUp, Search, Settings, Rocket
+  Star, Quote, Zap, Code, TrendingUp, Search, Settings, Rocket, X
 } from "lucide-react";
 
 // ==========================================
@@ -135,7 +135,6 @@ const PORTFOLIO_DATA = {
           { title: "Zero-Latency Automation", desc: "Google Sheets & EasyOrders Sync" },
           { title: "Mobile-First Design", desc: "Fully responsive, fast, and smooth" }
         ],
-        // 👇 تأكد إن صورة المتجر دي موجودة في فولدر public بنفس الاسم 👇
         imagePath: "/torath-mockup.png"
       },
       {
@@ -149,7 +148,6 @@ const PORTFOLIO_DATA = {
           { title: "Urgency Timers", desc: "Free Shipping countdown & Trust Badges" },
           { title: "Google Sheets Sync", desc: "Automated real-time order routing" }
         ],
-        // 👇 تأكد إن صورة المتجر دي موجودة في فولدر public بنفس الاسم 👇
         imagePath: "/asia-mockup.png"
       }
     ]
@@ -157,11 +155,12 @@ const PORTFOLIO_DATA = {
 };
 
 // ==========================================
-// 2. COMPONENTS
+// 2. COMPONENTS (Updated SmartMockup for Iframe)
 // ==========================================
 
 const SmartMockup = ({ url, imagePath }: { url: string, imagePath?: string }) => {
   const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
+  const [isLive, setIsLive] = useState(false); // حالة جديدة عشان تفتح الـ Iframe جوه الشاشة
 
   const getWidth = () => {
     if (device === 'mobile') return 'max-w-[375px]';
@@ -171,6 +170,7 @@ const SmartMockup = ({ url, imagePath }: { url: string, imagePath?: string }) =>
 
   return (
     <div className="bg-[#1A1A24] border border-white/10 rounded-2xl p-4 flex flex-col h-full overflow-hidden shadow-2xl relative z-10">
+      {/* Browser Controls */}
       <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
         <div className="flex gap-2">
           <div className="w-3 h-3 rounded-full bg-red-500/40 border border-red-500/50" />
@@ -184,23 +184,47 @@ const SmartMockup = ({ url, imagePath }: { url: string, imagePath?: string }) =>
         </div>
       </div>
 
-      <div className="flex-1 bg-[#0A0A0F] flex justify-center items-start overflow-hidden rounded-xl border border-white/5 relative group cursor-pointer" onClick={() => window.open(url, '_blank')}>
+      {/* Screen Area */}
+      <div className="flex-1 bg-[#0A0A0F] flex justify-center items-start overflow-hidden rounded-xl border border-white/5 relative">
         <div className={`relative w-full h-[500px] transition-all duration-500 ease-in-out ${getWidth()}`}>
-          {imagePath ? (
-             <img src={imagePath} alt="Store Preview" className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-40 transition-opacity duration-300" />
-          ) : (
-             <div className="w-full h-full flex flex-col items-center justify-center text-white/20 bg-[#14141A]">
-                <ImageIcon size={48} className="mb-4 opacity-50" />
-                <span className="text-sm font-mono tracking-widest text-center px-4">Upload {imagePath || 'Screenshot'} to public folder</span>
-             </div>
-          )}
           
-          <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-             <div className="bg-emerald-500 text-black px-8 py-4 rounded-full font-bold flex items-center gap-2 shadow-[0_0_40px_rgba(16,185,129,0.4)] transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                Visit Live Store <ExternalLink size={18} />
-             </div>
-             <span className="text-white/60 text-xs mt-4 font-mono">Shopify security blocks embedded views</span>
-          </div>
+          {!isLive ? (
+            /* وضع الصورة (قبل ما يدوس) */
+            <div className="w-full h-full cursor-pointer group relative" onClick={() => setIsLive(true)}>
+              {imagePath ? (
+                 <img src={imagePath} alt="Store Preview" className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-30 transition-opacity duration-300" />
+              ) : (
+                 <div className="w-full h-full flex flex-col items-center justify-center text-white/20 bg-[#14141A]">
+                    <ImageIcon size={48} className="mb-4 opacity-50" />
+                    <span className="text-sm font-mono tracking-widest text-center px-4">Upload {imagePath || 'Screenshot'}</span>
+                 </div>
+              )}
+              
+              <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                 <div className="bg-emerald-500 text-black px-8 py-4 rounded-full font-bold flex items-center gap-2 shadow-[0_0_40px_rgba(16,185,129,0.4)] transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                    <Play size={18} fill="currentColor" /> Load Interactive Demo
+                 </div>
+              </div>
+            </div>
+          ) : (
+            /* وضع الـ Iframe (بعد ما يدوس) */
+            <div className="w-full h-full relative animate-in fade-in duration-500">
+              <iframe 
+                src={url} 
+                className="w-full h-full bg-white"
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                title="Live Demo"
+              />
+              <button 
+                onClick={() => setIsLive(false)}
+                className="absolute top-4 right-4 bg-red-500 hover:bg-red-600 text-white p-2 rounded-full shadow-lg transition-colors z-50 flex items-center gap-2"
+                title="Close Demo"
+              >
+                <X size={16} />
+              </button>
+            </div>
+          )}
+
         </div>
       </div>
     </div>
@@ -217,7 +241,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-[#0A0A0F] text-slate-300 selection:bg-emerald-500/30 selection:text-emerald-200 custom-font relative overflow-x-hidden">
       
-      {/* 👇 LIGHTWEIGHT FAST BACKGROUND (CSS ONLY - NO LAG) 👇 */}
+      {/* 👇 LIGHTWEIGHT FAST BACKGROUND 👇 */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#ffffff0a_1px,transparent_1px)] [background-size:24px_24px]"></div>
         <div className="absolute top-0 left-0 right-0 h-[600px] bg-gradient-to-b from-emerald-900/10 via-[#0A0A0F]/50 to-transparent"></div>
@@ -240,7 +264,6 @@ export default function Portfolio() {
       <section className="pt-40 pb-20 px-6 max-w-7xl mx-auto relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            {/* 👇 تكبير الصورة الشخصية جداً مع تأثير الإضاءة 👇 */}
             <motion.div initial={{opacity: 0, scale: 0.9}} animate={{opacity: 1, scale: 1}} className="mb-10 relative inline-flex">
                <div className="absolute inset-0 bg-emerald-500 blur-[50px] opacity-20 rounded-full scale-125"></div>
                <img 
