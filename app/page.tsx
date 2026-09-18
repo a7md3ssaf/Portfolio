@@ -135,6 +135,7 @@ const PORTFOLIO_DATA = {
           { title: "Zero-Latency Automation", desc: "Google Sheets & EasyOrders Sync" },
           { title: "Mobile-First Design", desc: "Fully responsive, fast, and smooth" }
         ],
+        // 👇 تأكد إن صورة المتجر دي موجودة في فولدر public بنفس الاسم 👇
         imagePath: "/torath-mockup.png"
       },
       {
@@ -148,6 +149,7 @@ const PORTFOLIO_DATA = {
           { title: "Urgency Timers", desc: "Free Shipping countdown & Trust Badges" },
           { title: "Google Sheets Sync", desc: "Automated real-time order routing" }
         ],
+        // 👇 تأكد إن صورة المتجر دي موجودة في فولدر public بنفس الاسم 👇
         imagePath: "/asia-mockup.png"
       }
     ]
@@ -182,21 +184,22 @@ const SmartMockup = ({ url, imagePath }: { url: string, imagePath?: string }) =>
         </div>
       </div>
 
-      <div className="flex-1 bg-[#0A0A0F] flex justify-center items-start overflow-hidden rounded-xl border border-white/5 relative group">
+      <div className="flex-1 bg-[#0A0A0F] flex justify-center items-start overflow-hidden rounded-xl border border-white/5 relative group cursor-pointer" onClick={() => window.open(url, '_blank')}>
         <div className={`relative w-full h-[500px] transition-all duration-500 ease-in-out ${getWidth()}`}>
           {imagePath ? (
-             <img src={imagePath} alt="Store Preview" className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-30 transition-opacity duration-500" />
+             <img src={imagePath} alt="Store Preview" className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-40 transition-opacity duration-300" />
           ) : (
-             <div className="w-full h-full flex flex-col items-center justify-center text-white/20">
+             <div className="w-full h-full flex flex-col items-center justify-center text-white/20 bg-[#14141A]">
                 <ImageIcon size={48} className="mb-4 opacity-50" />
-                <span className="text-sm font-mono tracking-widest">STORE_MOCKUP.JPG</span>
+                <span className="text-sm font-mono tracking-widest text-center px-4">Upload {imagePath || 'Screenshot'} to public folder</span>
              </div>
           )}
           
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-             <a href={url} target="_blank" rel="noopener noreferrer" className="bg-emerald-500 text-black px-8 py-3.5 rounded-full font-bold flex items-center gap-2 hover:bg-emerald-400 transition-colors shadow-[0_0_40px_rgba(16,185,129,0.3)] hover:scale-105">
+          <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+             <div className="bg-emerald-500 text-black px-8 py-4 rounded-full font-bold flex items-center gap-2 shadow-[0_0_40px_rgba(16,185,129,0.4)] transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                 Visit Live Store <ExternalLink size={18} />
-             </a>
+             </div>
+             <span className="text-white/60 text-xs mt-4 font-mono">Shopify security blocks embedded views</span>
           </div>
         </div>
       </div>
@@ -214,28 +217,14 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-[#0A0A0F] text-slate-300 selection:bg-emerald-500/30 selection:text-emerald-200 custom-font relative overflow-x-hidden">
       
-      {/* 👇 ANIMATED BACKGROUND PATTERN & BLOBS 👇 */}
-      <div className="fixed inset-0 z-0 pointer-events-none flex justify-center">
-        {/* Subtle Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f15_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f15_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-        
-        {/* Emerald Animated Glow */}
-        <motion.div 
-          animate={{ x: [0, 80, -40, 0], y: [0, 60, 100, 0] }}
-          transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
-          className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-emerald-900/10 blur-[120px]"
-        />
-        
-        {/* Blue Animated Glow */}
-        <motion.div 
-          animate={{ x: [0, -100, 60, 0], y: [0, -60, -120, 0] }}
-          transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-          className="absolute bottom-10 right-[-10%] w-[40vw] h-[40vw] rounded-full bg-blue-900/10 blur-[120px]"
-        />
+      {/* 👇 LIGHTWEIGHT FAST BACKGROUND (CSS ONLY - NO LAG) 👇 */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#ffffff0a_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div className="absolute top-0 left-0 right-0 h-[600px] bg-gradient-to-b from-emerald-900/10 via-[#0A0A0F]/50 to-transparent"></div>
       </div>
 
       {/* NAV */}
-      <nav className="fixed top-0 w-full z-50 bg-[#0A0A0F]/60 backdrop-blur-xl border-b border-white/5">
+      <nav className="fixed top-0 w-full z-50 bg-[#0A0A0F]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div>
             <span className="text-xl font-bold text-white block">{PORTFOLIO_DATA.header.logo}</span>
@@ -251,17 +240,18 @@ export default function Portfolio() {
       <section className="pt-40 pb-20 px-6 max-w-7xl mx-auto relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
+            {/* 👇 تكبير الصورة الشخصية جداً مع تأثير الإضاءة 👇 */}
             <motion.div initial={{opacity: 0, scale: 0.9}} animate={{opacity: 1, scale: 1}} className="mb-10 relative inline-flex">
-               <div className="absolute inset-0 bg-emerald-500 blur-[40px] opacity-20 rounded-full scale-150"></div>
+               <div className="absolute inset-0 bg-emerald-500 blur-[50px] opacity-20 rounded-full scale-125"></div>
                <img 
                  src={PORTFOLIO_DATA.hero.photo} 
                  alt="Ahmed Assaf" 
-                 className="w-24 h-24 rounded-full border border-white/20 object-cover relative z-10 shadow-2xl" 
+                 className="w-40 h-40 md:w-48 md:h-48 rounded-full border border-white/10 object-cover relative z-10 shadow-[0_0_40px_rgba(0,0,0,0.5)]" 
                  onError={(e) => { e.currentTarget.style.display = 'none'; }} 
                />
             </motion.div>
 
-            <div className="text-xs font-mono text-gray-400 tracking-[0.2em] uppercase mb-6 flex gap-4">
+            <div className="text-xs font-mono text-emerald-500 tracking-[0.2em] uppercase mb-6 flex gap-4 font-bold">
               <span>E-Commerce</span> <span>×</span> <span>Growth</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-[1.1] mb-8 tracking-tight" dir="auto">
