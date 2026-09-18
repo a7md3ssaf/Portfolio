@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  BarChart3, ShoppingCart, Monitor, Smartphone, Tablet, 
+  BarChart3, ShoppingCart, 
   Play, ArrowRight, Download, MessageCircle, 
   CheckCircle2, ExternalLink, Image as ImageIcon, Video,
   Star, Quote, Zap, Code, TrendingUp, Search, Settings, Rocket
@@ -135,9 +135,9 @@ const PORTFOLIO_DATA = {
           { title: "Zero-Latency Automation", desc: "Google Sheets & EasyOrders Sync" },
           { title: "Mobile-First Design", desc: "Fully responsive, fast, and smooth" }
         ],
-        // 👇 مسار الفيديو (ارفع الفيديو بصيغة mp4 في فولدر public) 👇
+        // مسار الفيديو الجديد
         videoUrl: "/torath-demo.mp4",
-        imagePath: "/torath-mockup.png" // صورة بديلة لو الفيديو لسة مترفعش
+        imagePath: "/torath-mockup.png"
       },
       {
         id: "asia-dev",
@@ -150,7 +150,6 @@ const PORTFOLIO_DATA = {
           { title: "Urgency Timers", desc: "Free Shipping countdown & Trust Badges" },
           { title: "Google Sheets Sync", desc: "Automated real-time order routing" }
         ],
-        // 👇 مسار الفيديو 👇
         videoUrl: "", 
         imagePath: "/asia-mockup.png"
       }
@@ -159,73 +158,51 @@ const PORTFOLIO_DATA = {
 };
 
 // ==========================================
-// 2. COMPONENTS (Updated SmartMockup for Video)
+// 2. COMPONENTS (Mobile-First Premium Video Mockup)
 // ==========================================
 
-const SmartMockup = ({ url, imagePath, videoUrl }: { url: string, imagePath?: string, videoUrl?: string }) => {
-  const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
-
-  const getWidth = () => {
-    if (device === 'mobile') return 'max-w-[375px]';
-    if (device === 'tablet') return 'max-w-[768px]';
-    return 'max-w-full';
-  };
-
+const MobileMockup = ({ url, imagePath, videoUrl }: { url: string, imagePath?: string, videoUrl?: string }) => {
   return (
-    <div className="bg-[#1A1A24] border border-white/10 rounded-2xl p-4 flex flex-col h-full overflow-hidden shadow-2xl relative z-10">
+    <div className="flex flex-col items-center justify-center gap-8 w-full">
       
-      {/* Browser Controls */}
-      <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
-        <div className="flex gap-2">
-          <div className="w-3 h-3 rounded-full bg-red-500/40 border border-red-500/50" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500/40 border border-yellow-500/50" />
-          <div className="w-3 h-3 rounded-full bg-green-500/40 border border-green-500/50" />
-        </div>
-        <div className="flex gap-2 bg-black/40 p-1 rounded-lg border border-white/5">
-          <button onClick={() => setDevice('desktop')} className={`p-1.5 rounded-md transition-colors ${device === 'desktop' ? 'bg-white/10 text-white' : 'text-gray-500 hover:text-white'}`}><Monitor size={16} /></button>
-          <button onClick={() => setDevice('tablet')} className={`p-1.5 rounded-md transition-colors ${device === 'tablet' ? 'bg-white/10 text-white' : 'text-gray-500 hover:text-white'}`}><Tablet size={16} /></button>
-          <button onClick={() => setDevice('mobile')} className={`p-1.5 rounded-md transition-colors ${device === 'mobile' ? 'bg-white/10 text-white' : 'text-gray-500 hover:text-white'}`}><Smartphone size={16} /></button>
-        </div>
-      </div>
-
-      {/* Screen Area */}
-      <div className="flex-1 bg-[#0A0A0F] flex flex-col items-center overflow-hidden rounded-xl border border-white/5 relative">
-        <div className={`relative w-full transition-all duration-500 ease-in-out ${getWidth()} bg-black flex-1 flex items-center justify-center`}>
-          
-          {videoUrl ? (
-            /* تشغيل الفيديو التلقائي (Live Demo Feel) */
-            <video 
-              src={videoUrl} 
-              autoPlay 
-              loop 
-              muted 
-              playsInline 
-              className="w-full h-auto max-h-[450px] object-cover opacity-90" 
-            />
-          ) : imagePath ? (
-            /* في حالة عدم وجود فيديو، تظهر الصورة كبديل */
-            <img 
-              src={imagePath} 
-              alt="Store Preview" 
-              className="w-full h-auto max-h-[450px] object-cover object-top opacity-90" 
-            />
-          ) : (
-            /* لو مفيش صورة أو فيديو */
-            <div className="flex flex-col items-center justify-center text-white/20 p-10">
-               <Video size={48} className="mb-4 opacity-50" />
-               <span className="text-sm font-mono tracking-widest text-center">Add .mp4 to public folder</span>
-            </div>
-          )}
-
-        </div>
+      {/* 📱 Phone Container 📱 */}
+      <div className="relative w-[280px] h-[580px] bg-[#0A0A0F] border-[8px] border-[#1A1A24] rounded-[3rem] shadow-2xl flex items-center justify-center overflow-hidden ring-1 ring-white/10 group">
         
-        {/* 👇 زرار View Live Store تحت الفيديو 👇 */}
-        <div className="w-full bg-[#101016] border-t border-white/5 p-5 flex justify-center items-center z-10">
-          <a href={url} target="_blank" rel="noopener noreferrer" className="bg-emerald-500 text-black px-8 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_30px_rgba(16,185,129,0.2)] hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] hover:-translate-y-1">
-            View Live Store <ExternalLink size={18} />
-          </a>
-        </div>
+        {/* Fake iOS Notch for premium look */}
+        <div className="absolute top-0 inset-x-0 h-6 bg-[#1A1A24] w-[40%] mx-auto rounded-b-2xl z-20 shadow-sm"></div>
+
+        {videoUrl ? (
+          /* Video Player with controls */
+          <video 
+            src={videoUrl} 
+            controls
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            className="w-full h-full object-cover z-10" 
+          />
+        ) : imagePath ? (
+          /* Fallback Image */
+          <img 
+            src={imagePath} 
+            alt="Store Preview" 
+            className="w-full h-full object-cover object-top z-10" 
+          />
+        ) : (
+          /* Empty State */
+          <div className="flex flex-col items-center justify-center text-white/20 p-6 z-10">
+             <Video size={48} className="mb-4 opacity-50" />
+             <span className="text-sm font-mono text-center">Add .mp4 to public folder</span>
+          </div>
+        )}
       </div>
+
+      {/* 🟢 View Live Store Button 🟢 */}
+      <a href={url} target="_blank" rel="noopener noreferrer" className="bg-emerald-500 text-black px-10 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_30px_rgba(16,185,129,0.2)] hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] hover:-translate-y-1">
+        View Live Store <ExternalLink size={18} />
+      </a>
+
     </div>
   );
 };
@@ -240,7 +217,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-[#0A0A0F] text-slate-300 selection:bg-emerald-500/30 selection:text-emerald-200 custom-font relative overflow-x-hidden">
       
-      {/* 👇 LIGHTWEIGHT FAST BACKGROUND 👇 */}
+      {/* BACKGROUND */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#ffffff0a_1px,transparent_1px)] [background-size:24px_24px]"></div>
         <div className="absolute top-0 left-0 right-0 h-[600px] bg-gradient-to-b from-emerald-900/10 via-[#0A0A0F]/50 to-transparent"></div>
@@ -406,28 +383,33 @@ export default function Portfolio() {
             {activeTab === 'development' && (
               <motion.div key="development" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }} className="space-y-8">
                 {PORTFOLIO_DATA.caseStudies.development.map((study) => (
-                  <div key={study.id} className="bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 md:p-12 flex flex-col lg:flex-row gap-12 shadow-2xl">
-                    <div className="w-full lg:w-1/3">
+                  <div key={study.id} className="bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 md:p-12 flex flex-col lg:flex-row gap-12 items-center shadow-2xl">
+                    <div className="w-full lg:w-1/2">
                       <div className="flex justify-between items-center mb-8">
                         <div>
-                          <h3 className="text-3xl font-black text-white mb-2" dir="auto">{study.title}</h3>
-                          <p className="text-gray-400 font-medium text-sm" dir="auto">{study.subtitle}</p>
+                          <h3 className="text-4xl font-black text-white mb-2" dir="auto">{study.title}</h3>
+                          <p className="text-emerald-400 font-bold text-sm uppercase tracking-wider" dir="auto">{study.subtitle}</p>
                         </div>
                       </div>
+                      
+                      <p className="text-gray-400 mb-8 leading-relaxed text-lg" dir="auto">{study.desc}</p>
+                      
                       <div className="space-y-6">
-                        <div className="text-sm font-bold text-white border-b border-white/10 pb-4">What I Built</div>
+                        <div className="text-sm font-bold text-white border-b border-white/10 pb-4">Features & Tech Stack</div>
                         {study.features.map((feature, i) => (
                           <div key={i} className="group cursor-default">
                             <div className="text-white font-bold mb-1 flex items-center gap-2" dir="auto">
-                              <span className="text-gray-600 text-xs font-mono">0{i+1}</span> {feature.title}
+                              <span className="text-emerald-500 text-xs font-mono">0{i+1}</span> {feature.title}
                             </div>
                             <div className="text-sm text-gray-500 pl-6 group-hover:text-gray-400 transition-colors" dir="auto">{feature.desc}</div>
                           </div>
                         ))}
                       </div>
                     </div>
-                    <div className="w-full lg:w-2/3 min-h-[500px]">
-                       <SmartMockup url={study.url} imagePath={study.imagePath} videoUrl={study.videoUrl} />
+                    
+                    {/* الموبايل والفيديو هيظهروا في الجزء ده */}
+                    <div className="w-full lg:w-1/2 flex justify-center mt-10 lg:mt-0">
+                       <MobileMockup url={study.url} imagePath={study.imagePath} videoUrl={study.videoUrl} />
                     </div>
                   </div>
                 ))}
