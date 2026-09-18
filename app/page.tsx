@@ -1,401 +1,363 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-// ضفنا هنا أيقونات الفيس بوك والانستجرام والواتساب (MessageCircle)
-import { BarChart3, Globe, Server, TrendingUp, Zap, Mail, Layers, Eye, MousePointerClick, Database, ExternalLink, Target, MessageCircle } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  BarChart3, ShoppingCart, Monitor, Smartphone, Tablet, 
+  Play, ArrowRight, Download, Facebook, Instagram, MessageCircle, 
+  CheckCircle2, ExternalLink
+} from "lucide-react";
 
 // ==========================================
-// 1. DATA SECTION (حط لينكاتك وأرقامك هنا)
+// 1. DATA SECTION
 // ==========================================
 
 const PORTFOLIO_DATA = {
   header: {
     logo: "Ahmed Assaf.",
-    links: [
-      { name: "About", href: "#about" },
-      { name: "Work", href: "#work" },
-      { name: "Contact", href: "#contact" }
-    ]
+    tagline: "Shopify Developer & Performance Marketer"
   },
-  // 👇 هنا هتحط رقم الواتساب بتاعك ولينكات السوشيال ميديا 👇
   contact: {
-    whatsapp: "https://wa.me/201551441247", // غير الرقم ده لرقمك (بكود الدولة 20 لمصر)
-    email: "mailto:ahmedassafofficial@gmail.com"
+    whatsapp: "https://wa.me/201551441247",
+    cvUrl: "/Ahmed_Assaf_CV.pdf" // حط مسار الـ CV بتاعك هنا
   },
   socials: {
-    facebook: "https://facebook.com/a7md3ssaf", // لينك الفيس بوك
-    instagram: "https://instagram.com/a7md3ssaf", // لينك الانستجرام
-    whatsapp: "https://wa.me/201551441247" // نفس رقم الواتساب
+    facebook: "https://facebook.com/a7md3ssaf",
+    instagram: "https://instagram.com/a7md3ssaf",
+    whatsapp: "https://wa.me/201551441247"
   },
-  hero: {
-    photoPlaceholder: "/Ahmed Assaf.jpg",
-    greeting: "Hi, I'm Ahmed Assaf 👋",
-    headlineStart: "Architecting ",
-    headlineHighlight: "Ecommerce Growth.",
-    subheadline: "Performance Marketing & Custom Shopify Development. Scaling premium brands to E£11M+ through data-driven Meta Ads, workflow automation, and high-converting UX.",
-  },
-  metricsTicker: [
-    "E£11.1M+ Tracked Revenue",
-    "Sticky Add-To-Cart Architecture",
-    "Real-time Google Sheets Sync",
-    "Consistent 10x-30x ROAS",
-    "Animated Trust Icons UI",
-    "Urgency & Free Shipping Timers"
+  // بيانات شريط الماركات (تقدر تبدل النص بصور لوجوهات لو حابب)
+  brands: [
+    { name: "TŌRATH", url: "https://torath.xyz" },
+    { name: "Asia Dates", url: "https://asia-dates.org" },
+    { name: "Outlet 90", url: "#" },
+    { name: "Emirates Perfumes", url: "https://emirates-perfumes.com" },
+    { name: "Perfume Palace", url: "https://perfume-palace.com" },
+    { name: "Freezy Bites", url: "#" }
   ],
-  bentoStats: [
-    {
-      id: 1,
-      title: "Meta Ads Ecosystem",
-      desc: "Scaling brands with advanced CBO. Achieving 5x-30x ROAS with highly optimized CPP across FMCG, Heritage, and Fashion sectors.",
-      icon: <BarChart3 className="text-blue-600 mb-4" size={32} />,
-      wide: true,
-      bgGraphic: <TrendingUp size={200} className="text-blue-50" />
-    },
-    {
-      id: 2,
-      title: "Arabic UX & CRO",
-      desc: "Sticky ATCs, animated trust icons, and shipping timers.",
-      icon: <MousePointerClick className="text-blue-600 mb-4" size={32} />,
-      stat: "5.8%",
-      statLabel: "Peak Store CVR"
-    },
-    {
-      id: 3,
-      title: "Business Automation",
-      desc: "Zero-latency order syncing via Google Sheets & Cloudflare.",
-      icon: <Database className="text-blue-600 mb-4" size={32} />,
-      stat: "100%",
-      statLabel: "Automated Workflows"
-    }
+  stats: [
+    { value: "10+", label: "Brands Worked On" },
+    { value: "11M+", label: "Tracked Revenue (EGP)" },
+    { value: "30x", label: "Best ROAS Achieved" },
+    { value: "100%", label: "Focus on Results" }
   ],
-  caseStudies: [
-    {
-      id: "torath",
-      category: "Premium Heritage Manufacturing",
-      title: "Torath (تراث)",
-      description: "Scaled a premium Islamic heritage brand to E£7.23 Million in combined tracked sales. Achieved exceptional ROAS ranging from 10x to 30x with a highly profitable CPP of ~E£234. Engineered a high-converting Arabic UX featuring Sticky Add-To-Cart, live sale tickers, and automated backend syncing to Google Sheets, achieving peak conversion rates up to 5.8%.",
-      highlights: [
-        { label: "Total Revenue", value: "E£7.2M+" },
-        { label: "Average ROAS", value: "10x - 30x" },
-        { label: "Optimized CPP", value: "E£234" }
-      ],
-      features: [
-        { icon: <MousePointerClick size={16} className="text-blue-600"/>, text: "Sticky Add-To-Cart & Animated Trust Icons" },
-        { icon: <Database size={16} className="text-blue-600"/>, text: "Automated Google Sheets Order Routing" },
-        { icon: <Server size={16} className="text-blue-600"/>, text: "EasyOrders Fulfillment Integration" }
-      ],
-      imagePath: "/torath-mockup.png", 
-      storeUrl: "https://torath.xyz", 
-      reverseLayout: false,
-    },
-    {
-      id: "emirates-perfumes",
-      category: "FMCG & Premium Gifting",
-      title: "Emirates Perfumes (عطور الإمارات)",
-      description: "Engineered the digital infrastructure and media buying strategy to scale the brand to ~E£2 Million. Developed a custom Shopify UI featuring advanced bundle builders (AOV up to E£4,200), smart urgency countdowns, and sticky CTAs. Driven by aggressive Meta Ads campaigns achieving up to 16.6x ROAS.",
-      highlights: [
-        { label: "Total Revenue", value: "~E£2M" },
-        { label: "Peak ROAS", value: "16.6x" },
-        { label: "Peak AOV", value: "E£4,200" }
-      ],
-      features: [
-        { icon: <Layers size={16} className="text-blue-600"/>, text: "Custom Bundle Builder & Variant Selectors UI" },
-        { icon: <Eye size={16} className="text-blue-600"/>, text: "Urgency Timers & Trust-Driven CRO Elements" },
-        { icon: <Database size={16} className="text-blue-600"/>, text: "Real-time Google Sheets Automation" }
-      ],
-      imagePath: "/perfumes-mockup.png",
-      storeUrl: "https://emirates-perfumes.com", 
-      reverseLayout: true,
-    },
-    {
-      id: "asia-dates",
-      category: "Premium Agro E-commerce",
-      title: "Asia Dates (تمور آسية)",
-      description: "Scaled a premium dates and corporate gifting brand to E£1.86 Million. Designed custom Arabic UX flows with Free Shipping countdown timers, animated competitive pricing icons, and universal Sticky Add-To-Cart features. Managed highly efficient Meta Ads campaigns yielding 5.9x to 8.4x ROAS with an exceptional CPP ranging from E£113 to E£160.",
-      highlights: [
-        { label: "Total Revenue", value: "E£1.86M" },
-        { label: "Ads ROAS", value: "5.9x - 8.4x" },
-        { label: "Acquisition", value: "E£113 CPP" }
-      ],
-      features: [
-        { icon: <Globe size={16} className="text-blue-600"/>, text: "Custom Arabic Bundles (Sukkary + Rutab)" },
-        { icon: <Zap size={16} className="text-blue-600"/>, text: "Free Shipping Timers & Animated Trust UI" },
-        { icon: <Database size={16} className="text-blue-600"/>, text: "Zero-Latency Google Sheets Order Sync" }
-      ],
-      imagePath: "/asia-mockup.png",
-      storeUrl: "https://asia-dates.org", 
-      reverseLayout: false,
-    },
-    {
-      id: "perfume-palace",
-      category: "Performance Takeover & Scaling",
-      title: "Perfume Palace",
-      description: "Took over performance marketing and initiated rapid scaling for an emerging fragrance brand. Executed strategic UI/UX optimizations on the existing store to boost conversion rates. Deployed aggressive CBO campaigns and offer testing (e.g., Buy 2 Get 1 Free), achieving an impressive early average ROAS of 9.5x and peak campaign CTRs of 5.87%.",
-      highlights: [
-        { label: "Average ROAS", value: "9.5x" },
-        { label: "Peak CTR", value: "5.87%" },
-        { label: "Optimized CPP", value: "~E£177" }
-      ],
-      features: [
-        { icon: <Target size={16} className="text-blue-600"/>, text: "Advanced CBO Structuring & Offer Testing" },
-        { icon: <MousePointerClick size={16} className="text-blue-600"/>, text: "Targeted UI/UX Conversion Tweaks" },
-        { icon: <TrendingUp size={16} className="text-blue-600"/>, text: "Rapid Early-Stage Account Scaling" }
-      ],
-      imagePath: "/palace-mockup.png",
-      storeUrl: "https://perfume-palace.com", 
-      reverseLayout: true,
-    }
-  ]
+  caseStudies: {
+    performance: [
+      {
+        id: "torath-perf",
+        title: "TŌRATH",
+        subtitle: "Performance Marketing Case Study",
+        desc: "Scaling a premium Quran holder brand through Meta Ads. From zero to orders, we scaled Torath using strategic creatives, audience testing, and continuous optimization.",
+        url: "https://torath.xyz",
+        metrics: [
+          { value: "10x - 30x", label: "ROAS" },
+          { value: "EGP 7.2M+", label: "Revenue" },
+          { value: "EGP 234", label: "CPP" },
+          { value: "EGP 2,200", label: "AOV" }
+        ],
+        tags: ["Meta Ads", "CBO / ABO", "Creative Testing", "Audience Testing", "CRO"],
+        chartMockup: "/chart-mockup.png" // لو عندك صورة لشارت حطها هنا، أو هنسيبها بشكل جمالي
+      },
+      {
+        id: "emirates-perf",
+        title: "Emirates Perfumes",
+        subtitle: "Scaling FMCG & Premium Gifting",
+        desc: "Engineered the media buying strategy to scale the brand to ~EGP 2 Million. Driven by aggressive Meta Ads campaigns achieving peak profitability.",
+        url: "https://emirates-perfumes.com",
+        metrics: [
+          { value: "16.6x", label: "Peak ROAS" },
+          { value: "EGP 2M", label: "Revenue" },
+          { value: "EGP 4,200", label: "Peak AOV" }
+        ],
+        tags: ["Advanced CBO", "Offer Testing", "Bundle Strategy", "Scaling"],
+      }
+    ],
+    development: [
+      {
+        id: "torath-dev",
+        title: "TŌRATH",
+        subtitle: "Shopify Development Case Study",
+        desc: "A premium, high-converting store with custom Arabic UX features.",
+        url: "https://torath.xyz",
+        features: [
+          { title: "Dynamic Variant Gallery", desc: "Variant-specific images (mobile & desktop)" },
+          { title: "Sticky Buy Bar", desc: "Always visible, mobile optimized" },
+          { title: "Direct Checkout", desc: "Buy Now -> Checkout (fewer steps)" },
+          { title: "Zero-Latency Automation", desc: "Google Sheets & EasyOrders Sync" },
+          { title: "Mobile-First Design", desc: "Fully responsive, fast, and smooth" }
+        ]
+      },
+      {
+        id: "asia-dev",
+        title: "Asia Dates",
+        subtitle: "Custom Arabic UX & Automation",
+        desc: "Designed custom Arabic UX flows with Free Shipping countdown timers and animated UI.",
+        url: "https://asia-dates.org",
+        features: [
+          { title: "Custom Bundle Builder", desc: "Interactive selection for Sukkary + Rutab" },
+          { title: "Urgency Timers", desc: "Free Shipping countdown & Trust Badges" },
+          { title: "Google Sheets Sync", desc: "Automated real-time order routing" }
+        ]
+      }
+    ]
+  }
 };
 
 // ==========================================
-// 2. UI COMPONENTS 
+// 2. COMPONENTS
 // ==========================================
 
-const BentoCard = ({ data }: { data: any }) => (
-  <div className={`bg-white border border-slate-200 p-8 rounded-3xl relative overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col justify-between ${data.wide ? 'md:col-span-2' : ''}`}>
-    <div className="relative z-10">
-      <div className="transform group-hover:scale-110 transition-transform duration-500 origin-left">
-        {data.icon}
-      </div>
-      <h3 className={`${data.wide ? 'text-2xl' : 'text-xl'} font-bold mb-2 text-slate-900`}>{data.title}</h3>
-      <p className={`text-slate-600 ${data.wide ? 'max-w-md' : 'text-sm'}`}>{data.desc}</p>
-    </div>
-    
-    {data.stat && (
-      <div className="mt-8 text-4xl font-extrabold text-slate-900">
-        {data.stat}
-        <span className="text-sm text-slate-500 block font-medium mt-1">{data.statLabel}</span>
-      </div>
-    )}
+const LiveDemo = ({ url }: { url: string }) => {
+  const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
 
-    {data.bgGraphic && (
-      <div className="absolute right-0 bottom-0 opacity-40 group-hover:opacity-100 group-hover:rotate-12 transition-all duration-700 translate-x-1/4 translate-y-1/4">
-        {data.bgGraphic}
-      </div>
-    )}
-  </div>
-);
+  const getWidth = () => {
+    if (device === 'mobile') return 'max-w-[375px]';
+    if (device === 'tablet') return 'max-w-[768px]';
+    return 'max-w-full';
+  };
 
-const CaseStudyRow = ({ study }: { study: any }) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-100px" }}
-    transition={{ duration: 0.7, ease: "easeOut" }}
-    className={`mb-32 flex flex-col ${study.reverseLayout ? 'md:flex-row-reverse' : 'md:flex-row'} gap-12 items-center`}
-  >
-    <div className="w-full md:w-1/2 space-y-6">
-      <span className="text-blue-600 text-xs font-bold tracking-[0.2em] uppercase bg-blue-50 px-4 py-1.5 rounded-full">{study.category}</span>
-      <h3 className="text-4xl font-bold text-slate-900 tracking-tight">{study.title}</h3>
-      <p className="text-slate-600 leading-relaxed text-lg">{study.description}</p>
-      
-      {study.highlights && (
-        <div className="flex gap-4 pt-4 flex-wrap">
-          {study.highlights.map((h: any, idx: number) => (
-            <div key={idx} className="bg-slate-50 px-6 py-4 rounded-2xl border border-slate-200 hover:border-blue-200 hover:bg-blue-50/50 transition-colors duration-300">
-              <span className="block text-2xl font-bold text-slate-900">{h.value}</span>
-              <span className="text-sm font-medium text-slate-500">{h.label}</span>
-            </div>
-          ))}
+  return (
+    <div className="bg-[#1A1A24] border border-white/10 rounded-2xl p-4 flex flex-col h-full overflow-hidden">
+      {/* Browser Header & Controls */}
+      <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+        <div className="flex gap-2">
+          <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50" />
+          <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
+          <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50" />
         </div>
-      )}
-
-      {study.features && (
-        <ul className="space-y-3 pt-4 text-slate-700 font-medium">
-          {study.features.map((f: any, idx: number) => (
-            <li key={idx} className="flex items-center gap-3">
-              <span className="bg-blue-50 p-1.5 rounded-full">{f.icon}</span> 
-              {f.text}
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {study.storeUrl && (
-        <div className="pt-6">
-          <a 
-            href={study.storeUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="inline-flex items-center gap-2 bg-slate-900 text-white px-7 py-3.5 rounded-full font-semibold hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1"
-          >
-            View Store <ExternalLink size={18} />
-          </a>
+        
+        {/* Device Toggles */}
+        <div className="flex gap-2 bg-black/40 p-1 rounded-lg border border-white/5">
+          <button onClick={() => setDevice('desktop')} className={`p-1.5 rounded-md transition-colors ${device === 'desktop' ? 'bg-white/10 text-white' : 'text-gray-500 hover:text-white'}`}><Monitor size={16} /></button>
+          <button onClick={() => setDevice('tablet')} className={`p-1.5 rounded-md transition-colors ${device === 'tablet' ? 'bg-white/10 text-white' : 'text-gray-500 hover:text-white'}`}><Tablet size={16} /></button>
+          <button onClick={() => setDevice('mobile')} className={`p-1.5 rounded-md transition-colors ${device === 'mobile' ? 'bg-white/10 text-white' : 'text-gray-500 hover:text-white'}`}><Smartphone size={16} /></button>
         </div>
-      )}
 
-    </div>
+        <div className="text-xs text-gray-500 flex items-center gap-2 bg-black/40 px-3 py-1.5 rounded-full border border-white/5 truncate max-w-[200px]">
+          <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+          {url}
+        </div>
+      </div>
 
-    <div className="w-full md:w-1/2 bg-slate-100 aspect-[4/3] rounded-[2rem] border border-slate-200 flex items-center justify-center relative overflow-hidden group shadow-inner">
-      <div className="absolute inset-0 bg-slate-900/5 group-hover:bg-transparent transition-colors z-10 pointer-events-none"></div>
-      <img 
-        src={study.imagePath} 
-        alt={study.title} 
-        className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
-        onError={(e) => {
-          e.currentTarget.style.display = 'none';
-          e.currentTarget.parentElement!.innerHTML = `<span class="text-slate-400 font-mono text-sm text-center px-4">Drop picture here:<br/><b>public${study.imagePath}</b></span>`;
-        }}
-      />
+      {/* Iframe Container */}
+      <div className="flex-1 bg-black flex justify-center items-start overflow-hidden rounded-xl border border-white/5">
+        <div className={`w-full h-[500px] transition-all duration-500 ease-in-out ${getWidth()}`}>
+          <iframe 
+            src={url} 
+            title="Live Demo" 
+            className="w-full h-full bg-white"
+            sandbox="allow-scripts allow-same-origin"
+          />
+        </div>
+      </div>
     </div>
-  </motion.div>
-);
+  );
+};
 
 // ==========================================
-// 3. MAIN PAGE ASSEMBLY
+// 3. MAIN PAGE
 // ==========================================
 
 export default function Portfolio() {
-  return (
-    <div className="min-h-screen bg-[#FAFAFA] text-slate-900 selection:bg-blue-200 selection:text-blue-900 font-sans overflow-hidden">
-      
-      <nav className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-slate-200/80 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <span className="text-2xl font-extrabold tracking-tighter text-slate-900">{PORTFOLIO_DATA.header.logo}</span>
-          
-          <div className="hidden md:flex gap-10 items-center">
-            {PORTFOLIO_DATA.header.links.map((link, idx) => (
-              <a key={idx} href={link.href} className="text-slate-500 hover:text-slate-900 font-bold transition-colors text-xs tracking-[0.15em] uppercase relative group">
-                {link.name}
-                <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
-          </div>
+  const [activeTab, setActiveTab] = useState<'performance' | 'development'>('performance');
 
-          {/* 👇 زرار البار العلوي (Book Audit) اتعدل عشان يفتح الواتس 👇 */}
-          <a href={PORTFOLIO_DATA.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-slate-900 hover:bg-blue-600 text-white px-7 py-3 rounded-full text-sm font-semibold transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-blue-500/20 flex items-center gap-2">
-            <MessageCircle size={16} /> Get a Free Audit
+  return (
+    <div className="min-h-screen bg-[#0A0A0F] text-slate-300 selection:bg-emerald-500/30 selection:text-emerald-200 font-sans">
+      
+      {/* NAV */}
+      <nav className="fixed top-0 w-full z-50 bg-[#0A0A0F]/80 backdrop-blur-xl border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <div>
+            <span className="text-xl font-bold text-white block">{PORTFOLIO_DATA.header.logo}</span>
+            <span className="text-xs text-gray-500">{PORTFOLIO_DATA.header.tagline}</span>
+          </div>
+          <a href={PORTFOLIO_DATA.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-white text-black hover:bg-gray-200 px-6 py-2.5 rounded-full text-sm font-bold transition-colors flex items-center gap-2">
+            Let's Work <ArrowRight size={16} />
           </a>
         </div>
       </nav>
 
-      <section id="about" className="pt-48 pb-20 px-6 max-w-7xl mx-auto flex flex-col items-center text-center">
-        
-        <motion.div
-          animate={{ y: [0, -12, 0] }}
-          transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-          className="relative mb-8"
-        >
-          <div className="absolute inset-0 bg-blue-400 blur-2xl opacity-20 rounded-full scale-150"></div>
-          <div className="w-32 h-32 rounded-full bg-slate-200 border-4 border-white shadow-xl overflow-hidden flex items-center justify-center relative z-10">
-            <img 
-              src={PORTFOLIO_DATA.hero.photoPlaceholder} 
-              alt="Ahmed Assaf" 
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.parentElement!.innerHTML = `<span class="text-slate-400 text-xs font-mono text-center leading-tight">Add<br/>profile.jpg</span>`;
-              }}
-            />
+      {/* HERO */}
+      <section className="pt-40 pb-20 px-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="text-xs font-mono text-gray-400 tracking-[0.2em] uppercase mb-6 flex gap-4">
+              <span>E-Commerce</span> <span>×</span> <span>Growth</span> <span>×</span> <span>Real Results</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-[1.1] mb-8 tracking-tight">
+              Shopify Stores <br/><span className="text-gray-500">That Scale.</span>
+            </h1>
+            <p className="text-lg text-gray-400 max-w-md mb-10 leading-relaxed">
+              I design, develop, and grow Shopify brands through high-converting stores and data-driven Meta ads.
+            </p>
+            <div className="flex gap-4">
+              <a href="#work" className="bg-white text-black px-8 py-3.5 rounded-full font-bold hover:bg-gray-200 transition-colors flex items-center gap-2">
+                View My Work <ArrowRight size={18} />
+              </a>
+              <a href={PORTFOLIO_DATA.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="border border-white/20 text-white px-8 py-3.5 rounded-full font-bold hover:bg-white/10 transition-colors flex items-center gap-2">
+                <Play size={18} /> Contact Me
+              </a>
+            </div>
           </div>
-        </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-50/80 text-blue-700 border border-blue-200 text-sm font-semibold mb-8 backdrop-blur-sm"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-          </span>
-          <span>{PORTFOLIO_DATA.hero.greeting}</span>
-        </motion.div>
-        
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 leading-tight text-slate-900"
-        >
-          {PORTFOLIO_DATA.hero.headlineStart}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">
-            {PORTFOLIO_DATA.hero.headlineHighlight}
-          </span>
-        </motion.h1>
-        
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-lg md:text-xl text-slate-500 max-w-3xl mb-10 leading-relaxed font-medium"
-        >
-          {PORTFOLIO_DATA.hero.subheadline}
-        </motion.p>
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 gap-6 pt-10 md:pt-0 border-t md:border-t-0 md:border-l border-white/10 md:pl-12">
+            {PORTFOLIO_DATA.stats.map((stat, idx) => (
+              <div key={idx}>
+                <div className="text-4xl font-bold text-white mb-2">{stat.value}</div>
+                <div className="text-sm text-gray-500">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      <div className="border-y border-slate-200 bg-white py-5 overflow-hidden flex whitespace-nowrap relative shadow-sm">
-        <div className="absolute left-0 w-20 h-full bg-gradient-to-r from-white to-transparent z-10"></div>
-        <div className="absolute right-0 w-20 h-full bg-gradient-to-l from-white to-transparent z-10"></div>
-        <div className="animate-marquee flex gap-16 text-sm text-slate-400 font-bold tracking-[0.2em] uppercase items-center">
-           {PORTFOLIO_DATA.metricsTicker.map((metric, i) => (
-             <span key={i}>• {metric}</span>
-           ))}
-           {PORTFOLIO_DATA.metricsTicker.map((metric, i) => (
-             <span key={`dup-${i}`}>• {metric}</span>
-           ))}
+      {/* CLICKABLE MARQUEE */}
+      <div className="border-y border-white/5 bg-[#101016] py-8 overflow-hidden relative flex">
+        <div className="absolute left-0 w-32 h-full bg-gradient-to-r from-[#101016] to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 w-32 h-full bg-gradient-to-l from-[#101016] to-transparent z-10 pointer-events-none"></div>
+        
+        <div className="animate-marquee flex gap-20 items-center min-w-full">
+          {[...PORTFOLIO_DATA.brands, ...PORTFOLIO_DATA.brands].map((brand, i) => (
+            <a key={i} href={brand.url} target="_blank" rel="noopener noreferrer" className="text-2xl font-black text-gray-500 hover:text-white transition-colors uppercase tracking-widest whitespace-nowrap">
+              {brand.name}
+            </a>
+          ))}
         </div>
       </div>
 
-      <section className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {PORTFOLIO_DATA.bentoStats.map((stat) => (
-            <BentoCard key={stat.id} data={stat} />
-          ))}
-        </div>
-      </section>
-
+      {/* TABS SECTION */}
       <section id="work" className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-24">
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">Selected Work</h2>
-          <p className="text-slate-500 text-lg font-medium">Deep dives into performance scaling and technical infrastructure.</p>
-        </div>
         
-        {PORTFOLIO_DATA.caseStudies.map((study) => (
-          <CaseStudyRow key={study.id} study={study} />
-        ))}
+        {/* Tab Switcher */}
+        <div className="flex flex-col md:flex-row gap-4 mb-16 bg-[#14141A] p-2 rounded-2xl border border-white/5">
+          <button 
+            onClick={() => setActiveTab('performance')}
+            className={`flex-1 flex items-center justify-center gap-3 py-6 rounded-xl transition-all duration-300 font-bold text-lg ${activeTab === 'performance' ? 'bg-[#1D1D27] text-white shadow-lg border border-white/10' : 'text-gray-500 hover:text-gray-300 hover:bg-white/5'}`}
+          >
+            <BarChart3 className={activeTab === 'performance' ? 'text-emerald-400' : ''} /> Performance Marketing
+          </button>
+          <button 
+            onClick={() => setActiveTab('development')}
+            className={`flex-1 flex items-center justify-center gap-3 py-6 rounded-xl transition-all duration-300 font-bold text-lg ${activeTab === 'development' ? 'bg-[#1D1D27] text-white shadow-lg border border-white/10' : 'text-gray-500 hover:text-gray-300 hover:bg-white/5'}`}
+          >
+            <ShoppingCart className={activeTab === 'development' ? 'text-blue-400' : ''} /> Shopify Development
+          </button>
+        </div>
+
+        {/* Tab Content */}
+        <div className="space-y-12">
+          <AnimatePresence mode="wait">
+            
+            {/* PERFORMANCE MARKETING TAB */}
+            {activeTab === 'performance' && (
+              <motion.div key="performance" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }} className="space-y-8">
+                {PORTFOLIO_DATA.caseStudies.performance.map((study) => (
+                  <div key={study.id} className="bg-[#14141A] border border-white/10 rounded-[2rem] p-8 md:p-12 group hover:border-white/20 transition-colors">
+                    <div className="flex justify-between items-start mb-8">
+                      <div>
+                        <h3 className="text-3xl font-black text-white mb-2">{study.title}</h3>
+                        <p className="text-gray-400 font-medium">{study.subtitle}</p>
+                      </div>
+                      <a href={study.url} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-white flex items-center gap-2 hover:text-emerald-400 transition-colors">
+                        View Store <ExternalLink size={16} />
+                      </a>
+                    </div>
+                    
+                    <p className="text-gray-400 mb-10 max-w-3xl leading-relaxed">{study.desc}</p>
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+                      {study.metrics.map((m, i) => (
+                        <div key={i} className="bg-[#1A1A24] p-6 rounded-2xl border border-white/5">
+                          <div className="text-3xl font-black text-white mb-1">{m.value}</div>
+                          <div className="text-sm text-gray-500">{m.label}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-wrap gap-3">
+                      {study.tags.map((tag, i) => (
+                        <span key={i} className="bg-white/5 text-gray-300 px-4 py-2 rounded-full text-sm font-medium border border-white/10 flex items-center gap-2">
+                          <CheckCircle2 size={14} className="text-emerald-500" /> {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            )}
+
+            {/* SHOPIFY DEVELOPMENT TAB */}
+            {activeTab === 'development' && (
+              <motion.div key="development" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }} className="space-y-8">
+                {PORTFOLIO_DATA.caseStudies.development.map((study) => (
+                  <div key={study.id} className="bg-[#14141A] border border-white/10 rounded-[2rem] p-8 md:p-12 flex flex-col lg:flex-row gap-12">
+                    
+                    <div className="w-full lg:w-1/3">
+                      <div className="flex justify-between items-center mb-8">
+                        <div>
+                          <h3 className="text-3xl font-black text-white mb-2">{study.title}</h3>
+                          <p className="text-gray-400 font-medium text-sm">{study.subtitle}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-6">
+                        <div className="text-sm font-bold text-white border-b border-white/10 pb-4">What I Built</div>
+                        {study.features.map((feature, i) => (
+                          <div key={i} className="group cursor-default">
+                            <div className="text-white font-bold mb-1 flex items-center gap-2">
+                              <span className="text-gray-600 text-xs font-mono">0{i+1}</span> {feature.title}
+                            </div>
+                            <div className="text-sm text-gray-500 pl-6 group-hover:text-gray-400 transition-colors">{feature.desc}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="w-full lg:w-2/3 min-h-[500px]">
+                       <LiveDemo url={study.url} />
+                    </div>
+
+                  </div>
+                ))}
+              </motion.div>
+            )}
+
+          </AnimatePresence>
+        </div>
       </section>
 
-      <section id="contact" className="py-32 px-6">
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="max-w-5xl mx-auto bg-slate-900 rounded-[3rem] p-16 md:p-24 text-center shadow-2xl relative overflow-hidden group"
-        >
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] [background-size:20px_20px] group-hover:scale-105 transition-transform duration-1000"></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent"></div>
+      {/* FOOTER CTA */}
+      <section id="contact" className="py-24 px-6 border-t border-white/5">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+          <div>
+            <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-4">Let's build something great</div>
+            <h2 className="text-5xl font-black text-white leading-tight mb-4">Ready to Scale <br/>Your Brand? <span className="text-emerald-500">.</span></h2>
+            <p className="text-gray-400 max-w-md">Whether you need a high-converting Shopify store, a performance marketing strategy, or both — let's make it happen.</p>
+          </div>
           
-          <div className="relative z-10">
-            <h2 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight text-white leading-tight">Systems built for scale. <br/> Let’s look at your data.</h2>
-            <p className="text-slate-300 mb-10 max-w-xl mx-auto text-lg font-medium">Currently accepting select ecommerce partnerships for performance scaling and technical Shopify development.</p>
-            
-            {/* 👇 زرار التواصل (Get In Touch) اتعدل لزرار واتساب بيفتح مباشر 👇 */}
-            <a href={PORTFOLIO_DATA.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-white w-fit text-slate-900 px-10 py-5 rounded-full font-bold text-lg hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(37,99,235,0.4)] flex items-center justify-center gap-2 mx-auto hover:-translate-y-1">
-              <MessageCircle size={20} /> Get In Touch
+          <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+            <a href={PORTFOLIO_DATA.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-gray-200 transition-colors flex items-center justify-center gap-2 text-lg">
+              Let's Work Together <ArrowRight size={20} />
+            </a>
+            <a href={PORTFOLIO_DATA.contact.cvUrl} download className="border border-white/20 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors flex items-center justify-center gap-2 text-lg">
+              <Download size={20} /> View My CV
             </a>
           </div>
-        </motion.div>
+        </div>
       </section>
 
-      {/* 👇 قسم الـ Footer الجديد بأيقونات السوشيال ميديا 👇 */}
-      <footer className="border-t border-slate-200 bg-white py-12">
+      {/* MINI FOOTER */}
+      <footer className="border-t border-white/5 bg-black py-8">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-slate-500 font-medium text-sm">© {new Date().getFullYear()} {PORTFOLIO_DATA.header.logo} All rights reserved.</p>
-          
+          <div>
+            <span className="font-bold text-white block">{PORTFOLIO_DATA.header.logo}</span>
+            <span className="text-xs text-gray-600">© {new Date().getFullYear()} All rights reserved.</span>
+          </div>
           <div className="flex gap-6">
-            <a href={PORTFOLIO_DATA.socials.facebook} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-600 transition-colors" aria-label="Facebook">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-            <a href={PORTFOLIO_DATA.socials.instagram} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-pink-600 transition-colors" aria-label="Instagram">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-            </a>
-            <a href={PORTFOLIO_DATA.socials.whatsapp} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-green-500 transition-colors" aria-label="WhatsApp">
-              <MessageCircle size={20} />
-            </a>
+            <a href={PORTFOLIO_DATA.socials.facebook} className="text-gray-500 hover:text-white transition-colors"><Facebook size={20} /></a>
+            <a href={PORTFOLIO_DATA.socials.instagram} className="text-gray-500 hover:text-white transition-colors"><Instagram size={20} /></a>
+            <a href={PORTFOLIO_DATA.socials.whatsapp} className="text-gray-500 hover:text-white transition-colors"><MessageCircle size={20} /></a>
           </div>
         </div>
       </footer>
@@ -406,8 +368,11 @@ export default function Portfolio() {
           100% { transform: translateX(-50%); }
         }
         .animate-marquee {
-          animation: marquee 35s linear infinite;
-          min-width: 200%;
+          animation: marquee 30s linear infinite;
+          width: max-content;
+        }
+        .animate-marquee:hover {
+          animation-play-state: paused;
         }
         html {
           scroll-behavior: smooth;
