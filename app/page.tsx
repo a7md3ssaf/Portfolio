@@ -107,7 +107,11 @@ const PORTFOLIO_DATA = {
           { value: "EGP 2,200", label: "AOV" }
         ],
         tags: ["Meta Ads", "CBO / ABO", "Creative Testing", "Audience Testing", "CRO"],
-        imagePath: "/torath-ads.png" 
+        // 👇 مصفوفة سكرين شوتس النتايج، ضيف مسار الصور هنا 👇
+        resultsGallery: [
+          "/torath-roas.png",
+          "/torath-shopify-sales.png"
+        ]
       },
       {
         id: "emirates-perf",
@@ -121,7 +125,10 @@ const PORTFOLIO_DATA = {
           { value: "EGP 4,200", label: "Peak AOV" }
         ],
         tags: ["Advanced CBO", "Offer Testing", "Bundle Strategy", "Scaling"],
-        imagePath: "/emirates-ads.png" 
+        // 👇 مصفوفة سكرين شوتس النتايج 👇
+        resultsGallery: [
+          "/emirates-results.png"
+        ]
       }
     ],
     development: [
@@ -273,12 +280,10 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-[#05050A] text-slate-300 selection:bg-emerald-500/30 selection:text-emerald-200 custom-font relative overflow-x-hidden">
       
-      {/* 👇 PURE CSS BULLETPROOF BACKGROUND (GRID PATTERN) 👇 */}
+      {/* PURE CSS BULLETPROOF BACKGROUND */}
       <div className="grid-background fixed inset-0 z-0 pointer-events-none">
-        {/* Subtle Glows to add depth */}
         <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-emerald-900/15 blur-[120px] rounded-full"></div>
         <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-cyan-900/15 blur-[120px] rounded-full"></div>
-        {/* Fade Overlay so the grid fades out smoothly at the bottom */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#05050A]/70 to-[#05050A]"></div>
       </div>
 
@@ -417,7 +422,7 @@ export default function Portfolio() {
                       ))}
                     </div>
 
-                    <div className="flex flex-wrap gap-3 mb-8">
+                    <div className="flex flex-wrap gap-3 mb-10">
                       {study.tags.map((tag, i) => (
                         <span key={i} className="bg-emerald-500/10 text-emerald-400 px-5 py-2.5 rounded-full text-sm font-bold border border-emerald-500/20 flex items-center gap-2" dir="auto">
                           <CheckCircle2 size={14} className="text-emerald-500" /> {tag}
@@ -425,14 +430,27 @@ export default function Portfolio() {
                       ))}
                     </div>
 
-                    {study.imagePath && (
-                      <div className="mt-10 rounded-3xl overflow-hidden border border-white/10">
-                         <img 
-                           src={study.imagePath} 
-                           alt={`${study.title} Results`} 
-                           className="w-full h-auto object-cover" 
-                           onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                         />
+                    {/* 👇 معرض سكرين شوتس النتائج (ROAS & Sales) 👇 */}
+                    {study.resultsGallery && study.resultsGallery.length > 0 && (
+                      <div className="mt-12">
+                        <div className="text-sm font-bold text-white border-b border-white/5 pb-4 mb-6 flex items-center gap-2">
+                          <TrendingUp className="text-emerald-500" size={16} /> Verified Results & Data
+                        </div>
+                        <div className={`grid gap-6 ${study.resultsGallery.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
+                          {study.resultsGallery.map((img, idx) => (
+                            <div key={idx} className="rounded-2xl overflow-hidden border border-white/10 bg-[#101016] shadow-xl group">
+                               <img 
+                                 src={img} 
+                                 alt={`${study.title} Verified Results ${idx + 1}`} 
+                                 className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-700 opacity-90 group-hover:opacity-100" 
+                                 onError={(e) => { 
+                                   e.currentTarget.style.display = 'none'; 
+                                   e.currentTarget.parentElement!.innerHTML = `<div class="p-8 text-xs font-mono text-gray-500 text-center border border-dashed border-white/10 rounded-2xl">Missing image:<br/>${img}</div>`;
+                                 }}
+                               />
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     )}
                   </div>
@@ -596,7 +614,6 @@ export default function Portfolio() {
         </div>
       </footer>
 
-      {/* 👇 PURE CSS للـ Grid Pattern عشان نضمن إنها تشتغل في أي متصفح 👇 */}
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
         
