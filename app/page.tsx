@@ -273,17 +273,13 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-[#05050A] text-slate-300 selection:bg-emerald-500/30 selection:text-emerald-200 custom-font relative overflow-x-hidden">
       
-      {/* 👇 VISIBLE PATTERN BACKGROUND (GRID + DOTS) 👇 */}
-      <div className="fixed inset-0 z-0 pointer-events-none bg-[#05050A]">
-        {/* Subtle Depth Glows */}
+      {/* 👇 PURE CSS BULLETPROOF BACKGROUND (GRID PATTERN) 👇 */}
+      <div className="grid-background fixed inset-0 z-0 pointer-events-none">
+        {/* Subtle Glows to add depth */}
         <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-emerald-900/15 blur-[120px] rounded-full"></div>
         <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-cyan-900/15 blur-[120px] rounded-full"></div>
-        
-        {/* Visible Dots Pattern with Fade Mask */}
-        <div className="absolute inset-0 bg-[radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:24px_24px] [mask-image:linear-gradient(to_bottom,#000_30%,transparent_100%)]"></div>
-        
-        {/* Visible Grid Lines Layer */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] [background-size:48px_48px] [mask-image:linear-gradient(to_bottom,#000_50%,transparent_100%)]"></div>
+        {/* Fade Overlay so the grid fades out smoothly at the bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#05050A]/70 to-[#05050A]"></div>
       </div>
 
       {/* NAV */}
@@ -335,7 +331,7 @@ export default function Portfolio() {
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }} className="grid grid-cols-2 gap-6 pt-10 md:pt-0 border-t md:border-t-0 md:border-l border-white/10 md:pl-12">
             {PORTFOLIO_DATA.stats.map((stat, idx) => (
-              <div key={idx} className="bg-[#0A0A0F] p-6 rounded-3xl border border-white/5">
+              <div key={idx} className="bg-[#0A0A0F] p-6 rounded-3xl border border-white/5 shadow-lg">
                 <div className="text-4xl font-black text-white mb-2" dir="auto">{stat.value}</div>
                 <div className="text-sm text-gray-400 font-medium" dir="auto">{stat.label}</div>
               </div>
@@ -600,6 +596,7 @@ export default function Portfolio() {
         </div>
       </footer>
 
+      {/* 👇 PURE CSS للـ Grid Pattern عشان نضمن إنها تشتغل في أي متصفح 👇 */}
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
         
@@ -609,6 +606,14 @@ export default function Portfolio() {
         
         [dir="auto"] {
           text-align: start;
+        }
+
+        .grid-background {
+          background-color: #05050A;
+          background-image: 
+            linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+          background-size: 36px 36px;
         }
 
         @keyframes marquee {
