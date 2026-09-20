@@ -222,13 +222,13 @@ const PORTFOLIO_DATA = {
 };
 
 // ==========================================
-// 2. COMPONENTS (Mobile-First Premium Video Mockup)
+// 2. COMPONENTS (Fast Mobile Mockup)
 // ==========================================
 
 const MobileMockup = ({ url, imagePath, videoUrl }: { url: string, imagePath?: string, videoUrl?: string }) => {
   return (
     <div className="flex flex-col items-center justify-center gap-8 w-full">
-      <div className="relative w-[280px] h-[580px] bg-[#05050A] border-[8px] border-[#1A1A24] rounded-[3rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] flex items-center justify-center overflow-hidden ring-1 ring-white/10 group">
+      <div className="relative w-[280px] h-[580px] bg-[#05050A] border-[8px] border-[#1A1A24] rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center justify-center overflow-hidden ring-1 ring-white/10 group">
         <div className="absolute top-0 inset-x-0 h-6 bg-[#1A1A24] w-[40%] mx-auto rounded-b-2xl z-20 shadow-sm"></div>
 
         {videoUrl ? (
@@ -256,7 +256,7 @@ const MobileMockup = ({ url, imagePath, videoUrl }: { url: string, imagePath?: s
         )}
       </div>
 
-      <a href={url} target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-emerald-400 to-emerald-600 text-[#05050A] px-10 py-4 rounded-full font-bold flex items-center gap-2 hover:from-emerald-300 hover:to-emerald-500 transition-all duration-300 shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_50px_rgba(16,185,129,0.5)] hover:-translate-y-1">
+      <a href={url} target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-black px-10 py-4 rounded-full font-bold flex items-center gap-2 hover:from-emerald-400 hover:to-emerald-500 transition-colors shadow-lg hover:-translate-y-1">
         View Live Store <ExternalLink size={18} />
       </a>
     </div>
@@ -273,37 +273,21 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-[#05050A] text-slate-300 selection:bg-emerald-500/30 selection:text-emerald-200 custom-font relative overflow-x-hidden">
       
-      {/* 👇 AURORA GLASSMORPHISM BACKGROUND (PREMIUM UPGRADE) 👇 */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Base dark noise/grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-        
-        {/* Animated Orbs for Aurora Effect */}
-        <motion.div 
-          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.25, 0.1] }} 
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} 
-          className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-emerald-600/20 blur-[120px] mix-blend-screen"
-        />
-        <motion.div 
-          animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.2, 0.1] }} 
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }} 
-          className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-blue-600/20 blur-[120px] mix-blend-screen"
-        />
-        <motion.div 
-          animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.15, 0.1] }} 
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 5 }} 
-          className="absolute top-[40%] left-[20%] w-[40vw] h-[40vw] rounded-full bg-purple-600/15 blur-[120px] mix-blend-screen"
-        />
+      {/* 👇 LIGHTWEIGHT FAST BACKGROUND (CSS ONLY - NO LAG) 👇 */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#05050A]">
+        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-emerald-900/10 blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-cyan-900/10 blur-[120px] rounded-full"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_80%,transparent_100%)]"></div>
       </div>
 
       {/* NAV */}
-      <nav className="fixed top-0 w-full z-50 bg-[#05050A]/70 backdrop-blur-2xl border-b border-white/10">
+      <nav className="fixed top-0 w-full z-50 bg-[#05050A]/90 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div>
             <span className="text-xl font-black text-white block tracking-tight">{PORTFOLIO_DATA.header.logo}</span>
             <span className="text-xs text-gray-400 hidden md:block font-medium" dir="auto">{PORTFOLIO_DATA.header.tagline}</span>
           </div>
-          <a href={PORTFOLIO_DATA.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-white text-black hover:bg-gray-200 px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-lg hover:shadow-white/20 flex items-center gap-2">
+          <a href={PORTFOLIO_DATA.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-white text-black hover:bg-gray-200 px-6 py-2.5 rounded-full text-sm font-bold transition-colors flex items-center gap-2">
             Let's Work <ArrowRight size={16} />
           </a>
         </div>
@@ -312,14 +296,13 @@ export default function Portfolio() {
       {/* HERO */}
       <section className="pt-40 pb-20 px-6 max-w-7xl mx-auto relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <div className="mb-10 relative inline-flex">
-               <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500 to-cyan-500 blur-[40px] opacity-30 rounded-full scale-110"></div>
-               <div className="p-1 rounded-full bg-gradient-to-tr from-emerald-500/50 to-cyan-500/50 relative z-10">
+               <div className="p-1 rounded-full bg-gradient-to-tr from-emerald-500/50 to-cyan-500/50 relative z-10 shadow-xl">
                  <img 
                    src={PORTFOLIO_DATA.hero.photo} 
                    alt="Ahmed Assaf" 
-                   className="w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-[#05050A] object-cover shadow-2xl" 
+                   className="w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-[#05050A] object-cover" 
                    onError={(e) => { e.currentTarget.style.display = 'none'; }} 
                  />
                </div>
@@ -335,18 +318,18 @@ export default function Portfolio() {
               {PORTFOLIO_DATA.hero.subtitle}
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="#work" className="bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition-all flex items-center gap-2 shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:-translate-y-1">
+              <a href="#work" className="bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-gray-200 transition-colors flex items-center gap-2">
                 View My Work <ArrowRight size={18} />
               </a>
-              <a href={PORTFOLIO_DATA.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all flex items-center gap-2 backdrop-blur-md hover:-translate-y-1">
+              <a href={PORTFOLIO_DATA.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-[#10101A] border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-[#1A1A24] transition-colors flex items-center gap-2">
                 <Play size={18} /> Contact Me
               </a>
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="grid grid-cols-2 gap-6 pt-10 md:pt-0 border-t md:border-t-0 md:border-l border-white/10 md:pl-12">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }} className="grid grid-cols-2 gap-6 pt-10 md:pt-0 border-t md:border-t-0 md:border-l border-white/10 md:pl-12">
             {PORTFOLIO_DATA.stats.map((stat, idx) => (
-              <div key={idx} className="bg-white/[0.03] p-6 rounded-3xl border border-white/10 backdrop-blur-xl shadow-xl hover:bg-white/[0.05] transition-colors">
+              <div key={idx} className="bg-[#0A0A0F] p-6 rounded-3xl border border-white/5">
                 <div className="text-4xl font-black text-white mb-2" dir="auto">{stat.value}</div>
                 <div className="text-sm text-gray-400 font-medium" dir="auto">{stat.label}</div>
               </div>
@@ -355,8 +338,8 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* CLICKABLE MARQUEE */}
-      <div className="border-y border-white/5 bg-[#05050A]/60 backdrop-blur-md py-8 overflow-hidden relative flex z-10">
+      {/* FAST MARQUEE */}
+      <div className="border-y border-white/5 bg-[#0A0A0F] py-8 overflow-hidden relative flex z-10">
         <div className="absolute left-0 w-32 h-full bg-gradient-to-r from-[#05050A] to-transparent z-10 pointer-events-none"></div>
         <div className="absolute right-0 w-32 h-full bg-gradient-to-l from-[#05050A] to-transparent z-10 pointer-events-none"></div>
         
@@ -377,8 +360,8 @@ export default function Portfolio() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {PORTFOLIO_DATA.services.map((service, idx) => (
-            <div key={idx} className="bg-white/[0.03] backdrop-blur-2xl p-8 rounded-[2rem] border border-white/10 hover:border-white/20 transition-all hover:-translate-y-2 shadow-2xl hover:shadow-emerald-500/10 group">
-              <div className="mb-6 bg-white/5 w-fit p-4 rounded-2xl border border-white/5 group-hover:scale-110 transition-transform">{service.icon}</div>
+            <div key={idx} className="bg-[#0A0A0F] p-8 rounded-[2rem] border border-white/5 hover:border-white/10 transition-colors shadow-lg">
+              <div className="mb-6 bg-white/5 w-fit p-4 rounded-2xl border border-white/5">{service.icon}</div>
               <h3 className="text-xl font-bold text-white mb-3" dir="auto">{service.title}</h3>
               <p className="text-gray-400 text-sm leading-relaxed" dir="auto">{service.desc}</p>
             </div>
@@ -388,16 +371,16 @@ export default function Portfolio() {
 
       {/* TABS SECTION */}
       <section id="work" className="py-24 px-6 max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row gap-4 mb-16 bg-white/[0.02] backdrop-blur-xl p-2 rounded-2xl border border-white/10 shadow-2xl">
+        <div className="flex flex-col md:flex-row gap-4 mb-16 bg-[#0A0A0F] p-2 rounded-2xl border border-white/5 shadow-xl">
           <button 
             onClick={() => setActiveTab('performance')}
-            className={`flex-1 flex items-center justify-center gap-3 py-6 rounded-xl transition-all duration-300 font-bold text-lg ${activeTab === 'performance' ? 'bg-gradient-to-r from-emerald-600/20 to-cyan-600/20 text-white shadow-lg border border-emerald-500/30' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}
+            className={`flex-1 flex items-center justify-center gap-3 py-6 rounded-xl transition-colors font-bold text-lg ${activeTab === 'performance' ? 'bg-[#14141A] text-white border border-white/10' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}
           >
             <BarChart3 className={activeTab === 'performance' ? 'text-emerald-400' : ''} /> Performance Marketing
           </button>
           <button 
             onClick={() => setActiveTab('development')}
-            className={`flex-1 flex items-center justify-center gap-3 py-6 rounded-xl transition-all duration-300 font-bold text-lg ${activeTab === 'development' ? 'bg-gradient-to-r from-emerald-600/20 to-cyan-600/20 text-white shadow-lg border border-emerald-500/30' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}
+            className={`flex-1 flex items-center justify-center gap-3 py-6 rounded-xl transition-colors font-bold text-lg ${activeTab === 'development' ? 'bg-[#14141A] text-white border border-white/10' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}
           >
             <ShoppingCart className={activeTab === 'development' ? 'text-emerald-400' : ''} /> Shopify Development
           </button>
@@ -408,15 +391,15 @@ export default function Portfolio() {
             
             {/* 🔴 PERFORMANCE TAB 🔴 */}
             {activeTab === 'performance' && (
-              <motion.div key="performance" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }} className="space-y-8">
+              <motion.div key="performance" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }} className="space-y-8">
                 {PORTFOLIO_DATA.caseStudies.performance.map((study) => (
-                  <div key={study.id} className="bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[2rem] p-8 md:p-12 group hover:border-white/20 transition-all shadow-2xl">
+                  <div key={study.id} className="bg-[#0A0A0F] border border-white/5 rounded-[2rem] p-8 md:p-12 transition-colors shadow-lg">
                     <div className="flex justify-between items-start mb-8">
                       <div>
                         <h3 className="text-4xl font-black text-white mb-2" dir="auto">{study.title}</h3>
                         <p className="text-emerald-400 font-bold text-sm uppercase tracking-wider" dir="auto">{study.subtitle}</p>
                       </div>
-                      <a href={study.url} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-white flex items-center gap-2 hover:text-emerald-400 transition-colors bg-white/10 px-5 py-2.5 rounded-full border border-white/5">
+                      <a href={study.url} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-white flex items-center gap-2 hover:text-emerald-400 transition-colors bg-[#1A1A24] px-5 py-2.5 rounded-full border border-white/5">
                         View Store <ExternalLink size={16} />
                       </a>
                     </div>
@@ -425,7 +408,7 @@ export default function Portfolio() {
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
                       {study.metrics.map((m, i) => (
-                        <div key={i} className="bg-black/20 p-6 rounded-3xl border border-white/5 shadow-inner">
+                        <div key={i} className="bg-[#101016] p-6 rounded-3xl border border-white/5">
                           <div className="text-3xl font-black text-white mb-1" dir="auto">{m.value}</div>
                           <div className="text-sm text-gray-500 font-medium" dir="auto">{m.label}</div>
                         </div>
@@ -434,19 +417,18 @@ export default function Portfolio() {
 
                     <div className="flex flex-wrap gap-3 mb-8">
                       {study.tags.map((tag, i) => (
-                        <span key={i} className="bg-emerald-500/10 text-emerald-300 px-5 py-2.5 rounded-full text-sm font-bold border border-emerald-500/20 flex items-center gap-2" dir="auto">
+                        <span key={i} className="bg-emerald-500/10 text-emerald-400 px-5 py-2.5 rounded-full text-sm font-bold border border-emerald-500/20 flex items-center gap-2" dir="auto">
                           <CheckCircle2 size={14} className="text-emerald-500" /> {tag}
                         </span>
                       ))}
                     </div>
 
                     {study.imagePath && (
-                      <div className="mt-10 rounded-3xl overflow-hidden border border-white/10 relative group/img shadow-2xl ring-1 ring-white/5">
-                         <div className="absolute inset-0 bg-gradient-to-t from-[#05050A]/80 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity z-10 pointer-events-none"></div>
+                      <div className="mt-10 rounded-3xl overflow-hidden border border-white/10">
                          <img 
                            src={study.imagePath} 
                            alt={`${study.title} Results`} 
-                           className="w-full h-auto object-cover transform group-hover/img:scale-[1.03] transition-transform duration-1000 ease-out" 
+                           className="w-full h-auto object-cover" 
                            onError={(e) => { e.currentTarget.style.display = 'none'; }}
                          />
                       </div>
@@ -458,15 +440,15 @@ export default function Portfolio() {
 
             {/* 🟢 DEVELOPMENT TAB 🟢 */}
             {activeTab === 'development' && (
-              <motion.div key="development" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }} className="space-y-8">
+              <motion.div key="development" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }} className="space-y-8">
                 
-                <div className="bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-2xl border border-white/10 rounded-[2rem] p-8 md:p-10 mb-12 shadow-2xl">
+                <div className="bg-[#0A0A0F] border border-white/5 rounded-[2rem] p-8 md:p-10 mb-12 shadow-lg">
                   <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3" dir="auto">
                     <Code className="text-cyan-400" size={28} /> Development Arsenal & CRO Features
                   </h3>
                   <div className="flex flex-wrap gap-3">
                     {['Sticky Add to Cart', 'Frequently Bought Together (FBT)', 'Countdown Timers', 'Free Shipping Bar', 'Optional Products in Cart', 'Interactive Sections', 'Trust Badges', 'Custom UI/UX', 'Performance Optimization'].map((feat, i) => (
-                      <span key={i} className="bg-white/5 text-gray-200 border border-white/10 px-5 py-2.5 rounded-full text-sm font-medium shadow-sm hover:border-cyan-500/50 hover:text-cyan-400 transition-colors cursor-default" dir="auto">
+                      <span key={i} className="bg-[#14141A] text-gray-300 border border-white/5 px-5 py-2.5 rounded-full text-sm font-medium" dir="auto">
                         {feat}
                       </span>
                     ))}
@@ -474,7 +456,7 @@ export default function Portfolio() {
                 </div>
 
                 {PORTFOLIO_DATA.caseStudies.development.map((study) => (
-                  <div key={study.id} className="bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[2rem] p-8 md:p-12 flex flex-col lg:flex-row gap-12 items-center shadow-2xl hover:border-white/20 transition-all group">
+                  <div key={study.id} className="bg-[#0A0A0F] border border-white/5 rounded-[2rem] p-8 md:p-12 flex flex-col lg:flex-row gap-12 items-center shadow-lg">
                     <div className="w-full lg:w-1/2">
                       <div className="flex justify-between items-center mb-8">
                         <div>
@@ -486,7 +468,7 @@ export default function Portfolio() {
                       <p className="text-gray-300 mb-8 leading-relaxed text-lg" dir="auto">{study.desc}</p>
                       
                       <div className="space-y-6">
-                        <div className="text-sm font-bold text-white border-b border-white/10 pb-4">Features Implemented</div>
+                        <div className="text-sm font-bold text-white border-b border-white/5 pb-4">Features Implemented</div>
                         {study.features.map((feature, i) => (
                           <div key={i} className="cursor-default">
                             <div className="text-white font-bold mb-1 flex items-center gap-2" dir="auto">
@@ -517,8 +499,8 @@ export default function Portfolio() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {PORTFOLIO_DATA.process.map((step, idx) => (
-            <div key={idx} className="bg-white/[0.03] backdrop-blur-2xl p-8 rounded-[2rem] border border-white/10 relative overflow-hidden group hover:bg-white/[0.06] transition-all hover:-translate-y-2 shadow-xl">
-              <div className="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-150 duration-700 text-emerald-500">
+            <div key={idx} className="bg-[#0A0A0F] p-8 rounded-[2rem] border border-white/5 relative overflow-hidden group hover:border-white/10 transition-colors shadow-lg">
+              <div className="absolute -right-4 -top-4 opacity-5 text-emerald-500">
                 {step.icon}
               </div>
               <div className="text-emerald-400 mb-6 bg-emerald-500/10 w-fit p-4 rounded-2xl border border-emerald-500/20">{step.icon}</div>
@@ -530,21 +512,21 @@ export default function Portfolio() {
       </section>
 
       {/* TESTIMONIALS SECTION */}
-      <section className="py-24 px-6 max-w-7xl mx-auto border-t border-white/5 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-900/10 via-transparent to-transparent relative z-10">
+      <section className="py-24 px-6 max-w-7xl mx-auto border-t border-white/5 bg-[#05050A] relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4" dir="auto">Client Success</h2>
           <p className="text-emerald-400 font-medium tracking-widest uppercase text-sm" dir="auto">Real results for real brands</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {PORTFOLIO_DATA.testimonials.map((test, idx) => (
-            <div key={idx} className="bg-white/[0.03] backdrop-blur-2xl p-8 rounded-[2rem] border border-white/10 flex flex-col justify-between shadow-2xl group hover:border-white/20 transition-all hover:-translate-y-2">
+            <div key={idx} className="bg-[#0A0A0F] p-8 rounded-[2rem] border border-white/5 flex flex-col justify-between shadow-lg hover:border-white/10 transition-colors">
               
               {test.imagePath ? (
-                <div className="w-full h-64 md:h-72 mb-8 rounded-2xl overflow-hidden bg-black/40 flex items-center justify-center border border-white/5 relative ring-1 ring-white/5">
+                <div className="w-full h-64 md:h-72 mb-8 rounded-2xl overflow-hidden bg-[#101016] flex items-center justify-center border border-white/5 ring-1 ring-white/5">
                   <img 
                     src={test.imagePath} 
                     alt={`Review from ${test.name}`} 
-                    className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity group-hover:scale-[1.03] duration-700" 
+                    className="w-full h-full object-contain p-2" 
                     onError={(e) => { 
                       e.currentTarget.style.display = 'none'; 
                       e.currentTarget.parentElement!.innerHTML = `<span class="text-sm font-mono text-gray-500">Image not found: ${test.imagePath}</span>`;
@@ -560,8 +542,8 @@ export default function Portfolio() {
                 </div>
               )}
 
-              <div className="flex items-center gap-4 mt-auto border-t border-white/10 pt-6">
-                <div className="w-12 h-12 bg-gradient-to-tr from-emerald-500/20 to-cyan-500/20 rounded-full flex items-center justify-center text-emerald-400 font-bold border border-emerald-500/30">
+              <div className="flex items-center gap-4 mt-auto border-t border-white/5 pt-6">
+                <div className="w-12 h-12 bg-[#1A1A24] rounded-full flex items-center justify-center text-emerald-400 font-bold border border-white/5">
                   {test.name.charAt(0)}
                 </div>
                 <div>
@@ -576,7 +558,7 @@ export default function Portfolio() {
 
       {/* FOOTER CTA */}
       <section id="contact" className="py-24 px-6 border-t border-white/5 relative z-10">
-        <div className="max-w-7xl mx-auto bg-gradient-to-br from-white/[0.03] to-transparent backdrop-blur-3xl border border-white/10 rounded-[3rem] p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12 shadow-2xl">
+        <div className="max-w-7xl mx-auto bg-[#0A0A0F] border border-white/5 rounded-[3rem] p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12 shadow-2xl">
           <div>
             <div className="text-xs font-mono text-emerald-400 uppercase tracking-widest mb-4 font-bold">Let's build something great</div>
             <h2 className="text-5xl font-black text-white leading-tight mb-4" dir="auto">Ready to Scale <br/>Your Brand? <span className="text-emerald-500">.</span></h2>
@@ -584,7 +566,7 @@ export default function Portfolio() {
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-            <a href={PORTFOLIO_DATA.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-emerald-400 to-cyan-500 text-[#05050A] px-10 py-5 rounded-full font-black hover:from-emerald-300 hover:to-cyan-400 transition-all flex items-center justify-center gap-2 text-lg shadow-[0_0_40px_rgba(16,185,129,0.3)] hover:shadow-[0_0_60px_rgba(16,185,129,0.5)] hover:-translate-y-1">
+            <a href={PORTFOLIO_DATA.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-emerald-500 text-black px-10 py-5 rounded-full font-black hover:bg-emerald-400 transition-colors flex items-center justify-center gap-2 text-lg shadow-lg">
               Let's Work Together <ArrowRight size={20} />
             </a>
           </div>
