@@ -273,11 +273,17 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-[#05050A] text-slate-300 selection:bg-emerald-500/30 selection:text-emerald-200 custom-font relative overflow-x-hidden">
       
-      {/* 👇 LIGHTWEIGHT FAST BACKGROUND (CSS ONLY - NO LAG) 👇 */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#05050A]">
-        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-emerald-900/10 blur-[120px] rounded-full"></div>
-        <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-cyan-900/10 blur-[120px] rounded-full"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_80%,transparent_100%)]"></div>
+      {/* 👇 VISIBLE PATTERN BACKGROUND (GRID + DOTS) 👇 */}
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[#05050A]">
+        {/* Subtle Depth Glows */}
+        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-emerald-900/15 blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-cyan-900/15 blur-[120px] rounded-full"></div>
+        
+        {/* Visible Dots Pattern with Fade Mask */}
+        <div className="absolute inset-0 bg-[radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:24px_24px] [mask-image:linear-gradient(to_bottom,#000_30%,transparent_100%)]"></div>
+        
+        {/* Visible Grid Lines Layer */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] [background-size:48px_48px] [mask-image:linear-gradient(to_bottom,#000_50%,transparent_100%)]"></div>
       </div>
 
       {/* NAV */}
