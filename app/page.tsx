@@ -40,7 +40,8 @@ const PORTFOLIO_DATA = {
     { name: "Freezy Bites", url: "https://freezybites.store" },
     { name: "Oplus Coffee", url: "https://opluscoffee.com/" },
     { name: "Art Expo", url: "https://artexpo.art" },
-    { name: "New Rayan", url: "https://newrayanpharmacy.com" }
+    { name: "New Rayan", url: "https://newrayanpharmacy.com" },
+    { name: "Outlet 90", url: "https://outlet90.com" }
   ],
   stats: [
     { value: "10+", label: "Brands Scaled" },
@@ -93,6 +94,7 @@ const PORTFOLIO_DATA = {
     }
   ],
   caseStudies: {
+    // 👇 تم إضافة الـ 3 كيس ستاديز الجديدة هنا 👇
     performance: [
       {
         id: "torath-perf",
@@ -107,10 +109,41 @@ const PORTFOLIO_DATA = {
           { value: "EGP 2,200", label: "AOV" }
         ],
         tags: ["Meta Ads", "CBO / ABO", "Creative Testing", "Audience Testing", "CRO"],
-        // 👇 مصفوفة سكرين شوتس النتايج، ضيف مسار الصور هنا 👇
         resultsGallery: [
           "/torath-roas.png",
           "/torath-shopify-sales.png"
+        ]
+      },
+      {
+        id: "asia-perf",
+        title: "Asia Dates (تمور آسية)",
+        subtitle: "Premium Dates & Corporate Gifting",
+        desc: "Scaled a premium dates and corporate gifting brand to E£1.86 Million. Designed custom Arabic UX flows with Free Shipping countdown timers, animated competitive pricing icons, and universal Sticky Add-To-Cart features. Managed highly efficient Meta Ads campaigns yielding 5.9x to 8.4x ROAS with an exceptional CPP ranging from E£113 to E£160.",
+        url: "https://asia-dates.org",
+        metrics: [
+          { value: "E£1.86M", label: "Total Revenue" },
+          { value: "5.9x - 8.4x", label: "Ads ROAS" },
+          { value: "E£113 - E£160", label: "CPP" }
+        ],
+        tags: ["Meta Ads", "Arabic UX", "Corporate Gifting", "CRO"],
+        resultsGallery: [
+          "/asia-results.png"
+        ]
+      },
+      {
+        id: "perfume-palace-perf",
+        title: "Perfume Palace",
+        subtitle: "Rapid Scaling for Emerging Fragrance Brand",
+        desc: "Took over performance marketing and initiated rapid scaling for an emerging fragrance brand. Executed strategic UI/UX optimizations on the existing store to boost conversion rates. Deployed aggressive CBO campaigns and offer testing (e.g., Buy 2 Get 1 Free), achieving an impressive early average ROAS of 9.5x and peak campaign CTRs of 5.87%.",
+        url: "https://perfume-palace.com",
+        metrics: [
+          { value: "9.5x", label: "Average ROAS" },
+          { value: "5.87%", label: "Peak CTR" },
+          { value: "~E£177", label: "Optimized CPP" }
+        ],
+        tags: ["CBO Campaigns", "Offer Testing", "UI/UX Optimization", "Scaling"],
+        resultsGallery: [
+          "/palace-results.png"
         ]
       },
       {
@@ -125,9 +158,24 @@ const PORTFOLIO_DATA = {
           { value: "EGP 4,200", label: "Peak AOV" }
         ],
         tags: ["Advanced CBO", "Offer Testing", "Bundle Strategy", "Scaling"],
-        // 👇 مصفوفة سكرين شوتس النتايج 👇
         resultsGallery: [
           "/emirates-results.png"
+        ]
+      },
+      {
+        id: "outlet90-perf",
+        title: "Outlet 90",
+        subtitle: "E-Commerce Growth & Performance",
+        desc: "Revamped the digital marketing strategy focusing on high-converting product pages and aggressive Meta Ads scaling. Achieved significant revenue growth and maintained a highly profitable acquisition cost. (Note: Scaling operations ongoing).",
+        url: "https://outlet90.com",
+        metrics: [
+          { value: "E£2.5M+", label: "Total Revenue" }, // 🔴 غير الرقم الوهمي ده من هنا 🔴
+          { value: "7.2x", label: "Average ROAS" },      // 🔴 غير الرقم الوهمي ده من هنا 🔴
+          { value: "E£95", label: "Acquisition CPP" }     // 🔴 غير الرقم الوهمي ده من هنا 🔴
+        ],
+        tags: ["Meta Ads", "Catalog Sales", "Retargeting", "ROAS Optimization"],
+        resultsGallery: [
+          "/outlet90-results.png"
         ]
       }
     ],
@@ -430,7 +478,7 @@ export default function Portfolio() {
                       ))}
                     </div>
 
-                    {/* 👇 معرض سكرين شوتس النتائج (ROAS & Sales) 👇 */}
+                    {/* معرض سكرين شوتس النتائج (ROAS & Sales) */}
                     {study.resultsGallery && study.resultsGallery.length > 0 && (
                       <div className="mt-12">
                         <div className="text-sm font-bold text-white border-b border-white/5 pb-4 mb-6 flex items-center gap-2">
