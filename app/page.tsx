@@ -114,6 +114,23 @@ const PORTFOLIO_DATA = {
         ]
       },
       {
+        id: "outlet90-perf",
+        title: "Outlet 90",
+        subtitle: "Massive E-Commerce Scaling",
+        desc: "Revamped the digital marketing strategy focusing on high-converting product pages and aggressive Meta Ads scaling. Achieved over 10 Million EGP in revenue with record-breaking ROAS peaks while maintaining a strictly profitable acquisition cost.",
+        url: "https://outlet90.com",
+        metrics: [
+          { value: "E£10M+", label: "Total Revenue" },
+          { value: "21x - 65x", label: "Ads ROAS" },
+          { value: "Max E£160", label: "Acquisition CPP" }
+        ],
+        tags: ["Meta Ads", "Catalog Sales", "Aggressive Scaling", "ROAS Optimization"],
+        resultsGallery: [
+          "/outlet90-1.jpg",
+          "/outlet90-2.jpg"
+        ]
+      },
+      {
         id: "asia-perf",
         title: "Asia Dates (تمور آسية)",
         subtitle: "Premium Dates & Corporate Gifting",
@@ -159,24 +176,8 @@ const PORTFOLIO_DATA = {
         ],
         tags: ["Advanced CBO", "Offer Testing", "Bundle Strategy", "Scaling"],
         resultsGallery: [
-          "/emirates-perfumes.png"
-        ]
-      },
-      {
-        id: "outlet90-perf",
-        title: "Outlet 90",
-        subtitle: "E-Commerce Growth & Performance",
-        desc: "Revamped the digital marketing strategy focusing on high-converting product pages and aggressive Meta Ads scaling. Achieved significant revenue growth and maintained a highly profitable acquisition cost. (Note: Scaling operations ongoing).",
-        url: "https://outlet90.com",
-        metrics: [
-          { value: "E£2.5M+", label: "Total Revenue" },
-          { value: "7.2x", label: "Average ROAS" },
-          { value: "E£95", label: "Acquisition CPP" }
-        ],
-        tags: ["Meta Ads", "Catalog Sales", "Retargeting", "ROAS Optimization"],
-        resultsGallery: [
-          "/outlet90-1.jpg",
-          "/outlet90-2.jpg"
+          "/emirates-perfumes.png",
+          "/perfumes-mockup.png" // ضفتلك الموك أب كصورة نتائج إضافية لو حابب
         ]
       }
     ],
