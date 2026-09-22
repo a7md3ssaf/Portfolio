@@ -127,7 +127,7 @@ const PORTFOLIO_DATA = {
         ],
         tags: ["Advanced CBO", "Offer Testing", "Bundle Strategy", "Scaling"],
         resultsGallery: [
-          "/emirates-perfumes.png"
+          "/emirates-results.png"
         ]
       },
       {
@@ -224,12 +224,12 @@ const PORTFOLIO_DATA = {
         id: "freezy-dev",
         title: "Freezy Bites",
         subtitle: "FMCG / Snacks",
-        desc: "A vibrant, engaging store designed for quick impulse buys. Implemented the standard high-conversion suite: Custom Code, Sticky ATC, and Trust Elements.",
+        desc: "A vibrant, engaging store designed for quick impulse buys. Implemented advanced interactive offers and standard high-conversion suite.",
         url: "https://freezybites.store",
         features: [
-          { title: "Custom Cart Drawer", desc: "AJAX-powered sliding cart with integrated upsells and dynamic Free Shipping Bar." },
-          { title: "Frictionless Purchasing", desc: "Sticky Add to Cart, prominent Trust Badges, and customized Testimonials." },
-          { title: "Urgency Timers", desc: "Strategic countdown timers on specific snack bundles to drive immediate action." }
+          { title: "Interactive Bundle Offers", desc: "Custom-coded sections allowing users to select specific bundles and instantly unlock an extra 3% discount." },
+          { title: "Free Shipping Bar", desc: "Dynamic progress bar to encourage higher cart totals seamlessly integrated into the header." },
+          { title: "Frictionless Purchasing", desc: "Sticky Add to Cart, prominent Trust Badges, and customized Testimonials." }
         ],
         imagePath: "/freezybites.store.png"
       },
@@ -240,9 +240,9 @@ const PORTFOLIO_DATA = {
         desc: "An immersive e-commerce experience focusing on coffee origin stories, supported by my core Shopify development framework for maximum CVR.",
         url: "https://opluscoffee.com/",
         features: [
-          { title: "Tailored UI/UX", desc: "Dark, premium aesthetic perfectly matched to the brand." },
-          { title: "Frequently Bought Together", desc: "Pairing coffee beans with equipment." },
-          { title: "Conversion Optimization", desc: "Streamlined navigation and quick-buy features." }
+          { title: "Tailored UI/UX", desc: "Dark, premium aesthetic perfectly matched to the brand's identity." },
+          { title: "Conversion Optimization", desc: "Streamlined navigation, quick-buy features, and Sticky Add to Cart." },
+          { title: "Universal CRO Features", desc: "Free Shipping Bars, Countdown Timers, and integrated Trust Badges." }
         ],
         imagePath: "/opluscoffee.com.png"
       },
@@ -270,7 +270,7 @@ const PORTFOLIO_DATA = {
           { title: "Standardized CRO", desc: "Sticky Add to Cart, Free Shipping Bar, Trust Badges, and custom Testimonial sections." },
           { title: "Interactive Sections", desc: "Custom grid layouts and hover effects built with pure CSS." }
         ],
-        imagePath: "/artexpo-mockup.png"
+        imagePath: "/artexpo.art.png"
       }
     ]
   }
@@ -326,12 +326,12 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#020604] text-slate-300 selection:bg-emerald-500/40 selection:text-white relative overflow-hidden font-sans" style={{ backgroundColor: '#020604' }}>
+    <div className="min-h-screen relative overflow-hidden font-sans text-slate-300 selection:bg-emerald-500/40 selection:text-white" style={{ backgroundColor: '#020604' }}>
       
       {/* 
         ====================================================
         🔥 PURE INLINE CSS BACKGROUND PATTERN (VERY VISIBLE) 🔥 
-        رفعنا شفافية الشبكة لـ 30% عشان تظهر بوضوح تام بدون ما تختفي
+        تم رفع شفافية الشبكة لـ 45% عشان تظهر واضحة وقوية جداً
         ====================================================
       */}
       <div 
@@ -339,16 +339,16 @@ export default function Portfolio() {
         style={{
           backgroundColor: '#020604',
           backgroundImage: `
-            linear-gradient(rgba(16, 185, 129, 0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(16, 185, 129, 0.3) 1px, transparent 1px)
+            linear-gradient(rgba(16, 185, 129, 0.45) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(16, 185, 129, 0.45) 1px, transparent 1px)
           `,
           backgroundSize: '40px 40px',
           backgroundPosition: 'center center'
         }}
       >
-        <div className="absolute top-[-15%] left-[-15%] w-[50%] h-[50%] bg-emerald-900/20 blur-[120px] rounded-full"></div>
-        <div className="absolute bottom-[-15%] right-[-15%] w-[50%] h-[50%] bg-emerald-900/10 blur-[120px] rounded-full"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020604]/80 to-[#020604]"></div>
+        <div className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-emerald-900/30 blur-[150px] rounded-full"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-emerald-900/20 blur-[150px] rounded-full"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020604]/60 to-[#020604]"></div>
       </div>
 
       <style dangerouslySetInnerHTML={{__html: `
@@ -447,7 +447,6 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* 🔴 تم إلغاء التأخير (whileInView) لضمان الظهور الفوري للكروت 🔴 */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0.1 }} className="grid grid-cols-2 gap-6 pt-10 md:pt-0 border-t md:border-t-0 md:border-l border-emerald-500/20 md:pl-12">
             {PORTFOLIO_DATA.stats.map((stat, idx) => (
               <div key={idx} className="bg-[#0a1a10]/50 backdrop-blur-md p-6 rounded-3xl border border-emerald-500/10 hover:border-emerald-500/30 group hover:-translate-y-1 transition-all shadow-xl">
@@ -459,7 +458,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* 🔴 تم تحسين شريط الماركيه ليكون ساطعاً وواضحاً قبل وبعد الـ Hover 🔴 */}
+      {/* FAST MARQUEE */}
       <div className="border-y border-emerald-500/10 bg-[#020604]/80 backdrop-blur-md py-8 overflow-hidden relative flex z-10 custom-font">
         <div className="absolute left-0 w-32 h-full bg-gradient-to-r from-[#020604] to-transparent z-10 pointer-events-none"></div>
         <div className="absolute right-0 w-32 h-full bg-gradient-to-l from-[#020604] to-transparent z-10 pointer-events-none"></div>
