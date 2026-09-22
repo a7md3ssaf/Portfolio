@@ -127,7 +127,7 @@ const PORTFOLIO_DATA = {
         ],
         tags: ["Advanced CBO", "Offer Testing", "Bundle Strategy", "Scaling"],
         resultsGallery: [
-          "/emirates-results.png"
+          "/emirates-perfumes.png"
         ]
       },
       {
