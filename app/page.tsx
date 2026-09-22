@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   BarChart3, ShoppingCart, 
-  Play, ArrowRight, Download, MessageCircle, 
-  CheckCircle2, ExternalLink, Image as ImageIcon, Video,
+  Play, ArrowRight, MessageCircle, 
+  CheckCircle2, ExternalLink, Image as ImageIcon,
   Zap, Code, TrendingUp, Search, Settings, Rocket, LayoutTemplate, X, ZoomIn
 } from "lucide-react";
 
@@ -34,14 +34,14 @@ const PORTFOLIO_DATA = {
     whatsapp: "https://wa.me/201551441247"
   },
   brands: [
+    { name: "Outlet 90", url: "https://outlet90.com" },
     { name: "Torath", url: "https://torath.co" },
     { name: "Emirates Perfumes", url: "https://emirates-perfumes.com" },
     { name: "Orvan Perfumes", url: "https://orvan-perfumes.com" },
-    { name: "Freezy Bites", url: "https://freezybites.store" },
+    { name: "Perfume Palace", url: "https://perfume-palace.com" },
+    { name: "Asia Dates", url: "https://asia-dates.org" },
     { name: "Oplus Coffee", url: "https://opluscoffee.com/" },
-    { name: "Art Expo", url: "https://artexpo.art" },
-    { name: "New Rayan", url: "https://newrayanpharmacy.com" },
-    { name: "Outlet 90", url: "https://outlet90.com" }
+    { name: "New Rayan", url: "https://newrayanpharmacy.com" }
   ],
   stats: [
     { value: "10+", label: "Brands Scaled" },
@@ -78,6 +78,7 @@ const PORTFOLIO_DATA = {
     { icon: <Rocket size={24} />, title: "4. Ads & Scale", desc: "Driving qualified traffic through data-driven Meta Ads and scaling vertically." }
   ],
   caseStudies: {
+    // 🔴 ترتيب الماركتنج كما طلبت 🔴
     performance: [
       {
         id: "outlet90-perf",
@@ -127,7 +128,7 @@ const PORTFOLIO_DATA = {
         ],
         tags: ["Advanced CBO", "Offer Testing", "Bundle Strategy", "Scaling"],
         resultsGallery: [
-          "/emirates-results.png"
+          "/emirates-perfumes.png"
         ]
       },
       {
@@ -164,6 +165,7 @@ const PORTFOLIO_DATA = {
         ]
       }
     ],
+    // 🟢 ترتيب التطوير كما طلبت 🟢
     development: [
       {
         id: "rayan-dev",
@@ -176,7 +178,6 @@ const PORTFOLIO_DATA = {
           { title: "Optional Products inside Cart", desc: "Relevant medical/cosmetic cross-sells." },
           { title: "Free Shipping Bar", desc: "Incentivizing larger pharmacy orders." }
         ],
-        videoUrl: "", 
         imagePath: "/newrayanpharmacy.com.png"
       },
       {
@@ -190,7 +191,6 @@ const PORTFOLIO_DATA = {
           { title: "Sticky Add to Cart", desc: "Always visible on mobile to drive conversions." },
           { title: "Conversion Optimization", desc: "Direct checkout flows with fewer steps." }
         ],
-        videoUrl: "", 
         imagePath: "/www.torath.co.png"
       },
       {
@@ -204,7 +204,6 @@ const PORTFOLIO_DATA = {
           { title: "Countdown Timers", desc: "Urgency elements perfectly integrated into the UI." },
           { title: "Optional Products", desc: "Upsell items embedded directly inside the cart." }
         ],
-        videoUrl: "",
         imagePath: "/emirates-perfumes.com.png"
       },
       {
@@ -218,7 +217,6 @@ const PORTFOLIO_DATA = {
           { title: "Trust Badges", desc: "Strategically placed to build instant credibility." },
           { title: "Performance Optimization", desc: "Lazy loading and script optimization for speed." }
         ],
-        videoUrl: "",
         imagePath: "/orvan-perfumes.com.png"
       },
       {
@@ -232,7 +230,6 @@ const PORTFOLIO_DATA = {
           { title: "Sticky Add to Cart", desc: "Frictionless mobile purchasing." },
           { title: "Custom Cart Drawer", desc: "AJAX-powered cart with integrated upsells." }
         ],
-        videoUrl: "",
         imagePath: "/freezybites.store.png"
       },
       {
@@ -246,22 +243,7 @@ const PORTFOLIO_DATA = {
           { title: "Frequently Bought Together", desc: "Pairing coffee beans with equipment." },
           { title: "Conversion Optimization", desc: "Streamlined navigation and quick-buy features." }
         ],
-        videoUrl: "",
         imagePath: "/opluscoffee.com.png"
-      },
-      {
-        id: "artexpo-dev",
-        title: "Art Expo",
-        subtitle: "Art & Decor",
-        desc: "A minimalist gallery-style store that lets the artwork stand out, built for lightning-fast speeds.",
-        url: "https://artexpo.art",
-        features: [
-          { title: "Performance Optimization", desc: "Handling high-res imagery without sacrificing speed." },
-          { title: "Interactive Sections", desc: "Custom grid layouts and hover effects." },
-          { title: "Trust Badges", desc: "Secure checkout indicators." }
-        ],
-        videoUrl: "",
-        imagePath: "/artexpo-mockup.png"
       },
       {
         id: "asia-dev",
@@ -274,7 +256,6 @@ const PORTFOLIO_DATA = {
           { title: "Urgency Timers", desc: "Free Shipping countdown & Trust Badges" },
           { title: "Google Sheets Sync", desc: "Automated real-time order routing" }
         ],
-        videoUrl: "", 
         imagePath: "/asia-dates.org.png"
       }
     ]
@@ -285,22 +266,20 @@ const PORTFOLIO_DATA = {
 // 2. COMPONENTS (Mobile Mockup)
 // ==========================================
 
-const MobileMockup = ({ url, imagePath, videoUrl, onImageClick }: { url: string, imagePath?: string, videoUrl?: string, onImageClick: (img: string) => void }) => {
+const MobileMockup = ({ url, imagePath, onImageClick }: { url: string, imagePath?: string, onImageClick: (img: string) => void }) => {
   return (
     <div className="flex flex-col items-center justify-center gap-8 w-full">
       <motion.div 
-        whileHover={{ y: -5, boxShadow: "0 30px 60px rgba(16,185,129,0.2)" }}
-        className="relative w-[280px] h-[580px] bg-[#020804] border-[6px] border-[#0a1a10] rounded-[3rem] shadow-[0_20px_40px_rgba(16,185,129,0.1)] flex items-center justify-center overflow-hidden ring-1 ring-emerald-500/20 group transition-all"
+        whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(16,185,129,0.3)" }}
+        className="relative w-[280px] h-[580px] bg-[#020604] border-[6px] border-[#0a1a10] rounded-[3rem] shadow-[0_20px_40px_rgba(0,0,0,0.8)] flex items-center justify-center overflow-hidden ring-1 ring-emerald-500/30 group transition-all"
       >
         <div className="absolute top-0 inset-x-0 h-6 bg-[#0a1a10] w-[40%] mx-auto rounded-b-2xl z-20 shadow-sm border-b border-x border-emerald-500/20"></div>
 
-        {videoUrl ? (
-          <video src={videoUrl} controls autoPlay loop muted playsInline className="w-full h-full object-cover z-10" />
-        ) : imagePath ? (
+        {imagePath ? (
           <div className="w-full h-full relative cursor-zoom-in" onClick={() => onImageClick(imagePath)}>
             <img src={imagePath} alt="Store Preview" className="w-full h-full object-cover object-top z-10 hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
             <div className="absolute inset-0 bg-emerald-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex items-center justify-center pointer-events-none">
-               <ZoomIn size={48} className="text-white drop-shadow-xl" />
+               <ZoomIn size={48} className="text-white drop-shadow-2xl" />
             </div>
           </div>
         ) : (
@@ -311,7 +290,7 @@ const MobileMockup = ({ url, imagePath, videoUrl, onImageClick }: { url: string,
         )}
       </motion.div>
 
-      <a href={url} target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-emerald-400 to-emerald-600 text-[#020804] px-10 py-4 rounded-full font-bold flex items-center gap-2 hover:from-emerald-300 hover:to-emerald-500 transition-all shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:shadow-[0_0_50px_rgba(16,185,129,0.6)] hover:-translate-y-1">
+      <a href={url} target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-emerald-400 to-emerald-600 text-[#020604] px-10 py-4 rounded-full font-bold flex items-center gap-2 hover:from-emerald-300 hover:to-emerald-500 transition-all shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_50px_rgba(16,185,129,0.6)] hover:-translate-y-1">
         View Live Store <ExternalLink size={18} />
       </a>
     </div>
@@ -326,110 +305,82 @@ export default function Portfolio() {
   const [activeTab, setActiveTab] = useState<'performance' | 'development'>('performance');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
-  // لضمان تحميل الخلفية الداكنة فورا
+  // Force strict background color instantly to prevent white flash
   useEffect(() => {
-    document.body.style.backgroundColor = "#020804";
+    document.documentElement.style.backgroundColor = "#020604";
+    document.body.style.backgroundColor = "#020604";
+    document.body.style.color = "#cbd5e1";
   }, []);
 
   return (
-    <div className="min-h-screen emerald-bg text-slate-300 selection:bg-emerald-500/40 selection:text-white custom-font relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#020604] text-slate-300 selection:bg-emerald-500/40 selection:text-white relative overflow-hidden font-sans" style={{ backgroundColor: '#020604' }}>
       
-      {/* 👇 PURE CSS FOR LUXURY EMERALD THEME + PREVENTING WHITE FLASH 👇 */}
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
-        
-        html, body {
-          background-color: #020804 !important;
-          color: #cbd5e1;
-          margin: 0;
-          padding: 0;
-        }
+      {/* 👇 BULLETPROOF TAILWIND GRID PATTERN (VISIBLE & LUXURY) 👇 */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        {/* Subtle Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b98115_1px,transparent_1px),linear-gradient(to_bottom,#10b98115_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_60%,transparent_100%)]"></div>
+        {/* Deep Corner Glows */}
+        <div className="absolute top-[-15%] left-[-15%] w-[50%] h-[50%] bg-emerald-900/20 blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-[-15%] right-[-15%] w-[50%] h-[50%] bg-emerald-900/10 blur-[120px] rounded-full"></div>
+      </div>
 
-        .custom-font {
-          font-family: system-ui, -apple-system, sans-serif, 'Cairo';
-        }
-        
-        [dir="auto"] {
-          text-align: start;
-        }
-
-        .emerald-bg {
-          background-color: #020804;
-          background-image: 
-            radial-gradient(circle at 50% 0%, #062b19 0%, transparent 70%),
-            url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2.5l10 3.75-10 3.75zm0 2.5v2.5l10-3.75-10-3.75V18h20v2H20v2.5z' fill='%2310b981' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
-        }
-
-        .glass-card {
-          background: rgba(4, 20, 10, 0.7);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          border: 1px solid rgba(16, 185, 129, 0.15);
-          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-          transition: all 0.3s ease;
-        }
-        .glass-card:hover {
-          border-color: rgba(16, 185, 129, 0.4);
-          box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.15);
-        }
-
-        @keyframes marquee {
+      {/* INJECT ANIMATION KEYFRAMES SAFELY */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes customMarquee {
           0% { transform: translateX(0%); }
           100% { transform: translateX(-50%); }
         }
-        .animate-marquee {
-          animation: marquee 35s linear infinite;
+        .animate-custom-marquee {
+          animation: customMarquee 35s linear infinite;
           width: max-content;
         }
-        .animate-marquee:hover {
+        .animate-custom-marquee:hover {
           animation-play-state: paused;
         }
-        html {
-          scroll-behavior: smooth;
-        }
-      `}</style>
+        html { scroll-behavior: smooth; }
+      `}} />
 
       {/* 👇 LIGHTBOX OVERLAY FOR IMAGES 👇 */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div 
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#020804]/90 backdrop-blur-md p-4 cursor-zoom-out"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#020604]/95 backdrop-blur-xl p-4 cursor-zoom-out"
             onClick={() => setSelectedImage(null)}
           >
-            <button className="absolute top-6 right-6 text-emerald-500 hover:text-white transition-colors bg-[#0a1a10] p-3 rounded-full border border-emerald-500/30">
+            <button className="absolute top-6 right-6 text-emerald-500 hover:text-white transition-colors bg-[#0a1a10] p-3 rounded-full border border-emerald-500/30 shadow-2xl">
               <X size={24} />
             </button>
             <motion.img 
-              initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              initial={{ scale: 0.9, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.9, opacity: 0, y: 20 }} transition={{ type: "spring", damping: 25, stiffness: 300 }}
               src={selectedImage} 
               alt="Enlarged view" 
-              className="max-w-full max-h-[90vh] rounded-2xl border border-emerald-500/50 shadow-[0_0_80px_rgba(16,185,129,0.3)] object-contain"
+              className="max-w-full max-h-[90vh] rounded-2xl border border-emerald-500/30 shadow-[0_0_80px_rgba(16,185,129,0.2)] object-contain"
             />
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* 👇 STICKY CONTACT ME BUTTON (FLOATING ACTION BUTTON) 👇 */}
+      {/* 👇 STICKY CONTACT ME BUTTON (ANIMATED PULSE) 👇 */}
       <motion.a
         href={PORTFOLIO_DATA.contact.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-[60] bg-emerald-500 text-[#020804] p-4 rounded-full shadow-[0_0_30px_rgba(16,185,129,0.5)] flex items-center justify-center group"
-        animate={{ scale: [1, 1.1, 1], boxShadow: ["0 0 20px rgba(16,185,129,0.4)", "0 0 50px rgba(16,185,129,0.8)", "0 0 20px rgba(16,185,129,0.4)"] }}
+        className="fixed bottom-8 right-8 z-[60] bg-emerald-500 text-[#020604] p-4 rounded-full shadow-[0_0_30px_rgba(16,185,129,0.5)] flex items-center justify-center group"
+        animate={{ scale: [1, 1.05, 1], boxShadow: ["0 0 20px rgba(16,185,129,0.4)", "0 0 40px rgba(16,185,129,0.7)", "0 0 20px rgba(16,185,129,0.4)"] }}
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
       >
         <MessageCircle size={32} className="group-hover:scale-110 transition-transform" />
       </motion.a>
 
       {/* NAV */}
-      <nav className="fixed top-0 w-full z-50 bg-[#020804]/80 backdrop-blur-xl border-b border-emerald-500/10">
+      <nav className="fixed top-0 w-full z-50 bg-[#020604]/80 backdrop-blur-xl border-b border-emerald-500/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div>
             <span className="text-xl font-black text-white block tracking-tight">{PORTFOLIO_DATA.header.logo}</span>
             <span className="text-xs text-emerald-500/70 hidden md:block font-bold" dir="auto">{PORTFOLIO_DATA.header.tagline}</span>
           </div>
-          <a href={PORTFOLIO_DATA.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-emerald-500 text-[#020804] hover:bg-emerald-400 px-6 py-2.5 rounded-full text-sm font-black transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] flex items-center gap-2 hover:-translate-y-0.5">
+          <a href={PORTFOLIO_DATA.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-emerald-500 text-[#020604] hover:bg-emerald-400 px-6 py-2.5 rounded-full text-sm font-black transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] flex items-center gap-2 hover:-translate-y-0.5">
             Hire Me <ArrowRight size={16} />
           </a>
         </div>
@@ -442,19 +393,19 @@ export default function Portfolio() {
             {/* 👇 ANIMATED HERO PHOTO 👇 */}
             <div className="mb-10 relative inline-flex">
                <motion.div 
-                 animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.1, 1] }} 
-                 transition={{ repeat: Infinity, duration: 3 }} 
-                 className="absolute inset-0 bg-emerald-500 blur-[50px] rounded-full"
+                 animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.15, 1] }} 
+                 transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }} 
+                 className="absolute inset-0 bg-emerald-500 blur-[40px] rounded-full"
                ></motion.div>
                <motion.div 
-                 animate={{ y: [-10, 10, -10] }} 
+                 animate={{ y: [-8, 8, -8] }} 
                  transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                 className="p-1 rounded-full bg-gradient-to-tr from-emerald-500 to-emerald-900 relative z-10 shadow-[0_0_50px_rgba(16,185,129,0.3)]"
+                 className="p-1 rounded-full bg-gradient-to-tr from-emerald-400 to-emerald-900 relative z-10 shadow-[0_0_50px_rgba(16,185,129,0.2)]"
                >
                  <img 
                    src={PORTFOLIO_DATA.hero.photo} 
                    alt="Ahmed Assaf" 
-                   className="w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-[#020804] object-cover" 
+                   className="w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-[#020604] object-cover" 
                    onError={(e) => { e.currentTarget.style.display = 'none'; }} 
                  />
                </motion.div>
@@ -470,15 +421,15 @@ export default function Portfolio() {
               {PORTFOLIO_DATA.hero.subtitle}
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="#work" className="bg-emerald-500 text-[#020804] px-8 py-4 rounded-full font-black hover:bg-emerald-400 transition-all flex items-center gap-2 shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:-translate-y-1">
+              <a href="#work" className="bg-emerald-500 text-[#020604] px-8 py-4 rounded-full font-black hover:bg-emerald-400 transition-all flex items-center gap-2 shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:-translate-y-1">
                 View Proof <ArrowRight size={18} />
               </a>
             </div>
           </div>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }} className="grid grid-cols-2 gap-6 pt-10 md:pt-0 border-t md:border-t-0 md:border-l border-emerald-500/20 md:pl-12">
+          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="grid grid-cols-2 gap-6 pt-10 md:pt-0 border-t md:border-t-0 md:border-l border-emerald-500/20 md:pl-12">
             {PORTFOLIO_DATA.stats.map((stat, idx) => (
-              <div key={idx} className="glass-card p-6 rounded-3xl group hover:-translate-y-1 transition-all">
+              <div key={idx} className="bg-[#0a1a10]/50 backdrop-blur-md p-6 rounded-3xl border border-emerald-500/10 hover:border-emerald-500/30 group hover:-translate-y-1 transition-all shadow-xl">
                 <div className="text-4xl font-black text-white mb-2 group-hover:text-emerald-400 transition-colors" dir="auto">{stat.value}</div>
                 <div className="text-sm text-gray-400 font-medium" dir="auto">{stat.label}</div>
               </div>
@@ -488,13 +439,13 @@ export default function Portfolio() {
       </section>
 
       {/* FAST MARQUEE */}
-      <div className="border-y border-emerald-500/10 bg-[#020804]/80 py-8 overflow-hidden relative flex z-10">
-        <div className="absolute left-0 w-32 h-full bg-gradient-to-r from-[#020804] to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute right-0 w-32 h-full bg-gradient-to-l from-[#020804] to-transparent z-10 pointer-events-none"></div>
+      <div className="border-y border-emerald-500/10 bg-[#020604]/80 backdrop-blur-md py-8 overflow-hidden relative flex z-10">
+        <div className="absolute left-0 w-32 h-full bg-gradient-to-r from-[#020604] to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 w-32 h-full bg-gradient-to-l from-[#020604] to-transparent z-10 pointer-events-none"></div>
         
-        <div className="animate-marquee flex gap-20 items-center min-w-full">
+        <div className="animate-custom-marquee flex gap-20 items-center min-w-full">
           {[...PORTFOLIO_DATA.brands, ...PORTFOLIO_DATA.brands].map((brand, i) => (
-            <a key={i} href={brand.url} target="_blank" rel="noopener noreferrer" className="text-2xl font-black text-emerald-900 hover:text-emerald-500 transition-colors uppercase tracking-widest whitespace-nowrap">
+            <a key={i} href={brand.url} target="_blank" rel="noopener noreferrer" className="text-2xl font-black text-emerald-900/60 hover:text-emerald-500 transition-colors uppercase tracking-widest whitespace-nowrap">
               {brand.name}
             </a>
           ))}
@@ -509,8 +460,8 @@ export default function Portfolio() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {PORTFOLIO_DATA.services.map((service, idx) => (
-            <div key={idx} className="glass-card p-8 rounded-[2rem] hover:-translate-y-2 transition-all">
-              <div className="mb-6 bg-emerald-500/10 w-fit p-4 rounded-2xl border border-emerald-500/20">{service.icon}</div>
+            <div key={idx} className="bg-[#0a1a10]/60 backdrop-blur-xl p-8 rounded-[2rem] border border-emerald-500/10 hover:border-emerald-500/40 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)] hover:-translate-y-2 transition-all group">
+              <div className="mb-6 bg-emerald-500/10 w-fit p-4 rounded-2xl border border-emerald-500/20 group-hover:scale-110 transition-transform">{service.icon}</div>
               <h3 className="text-xl font-bold text-white mb-3" dir="auto">{service.title}</h3>
               <p className="text-gray-400 text-sm leading-relaxed" dir="auto">{service.desc}</p>
             </div>
@@ -520,16 +471,16 @@ export default function Portfolio() {
 
       {/* TABS SECTION */}
       <section id="work" className="py-24 px-6 max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row gap-4 mb-16 bg-[#0a1a10] p-2 rounded-2xl border border-emerald-500/20 shadow-[0_0_30px_rgba(16,185,129,0.1)]">
+        <div className="flex flex-col md:flex-row gap-4 mb-16 bg-[#0a1a10] p-2 rounded-2xl border border-emerald-500/20 shadow-[0_0_30px_rgba(16,185,129,0.05)]">
           <button 
             onClick={() => setActiveTab('performance')}
-            className={`flex-1 flex items-center justify-center gap-3 py-6 rounded-xl transition-all font-bold text-lg ${activeTab === 'performance' ? 'bg-emerald-500 text-[#020804] shadow-[0_0_20px_rgba(16,185,129,0.4)]' : 'text-emerald-500/50 hover:text-emerald-400 hover:bg-emerald-500/10'}`}
+            className={`flex-1 flex items-center justify-center gap-3 py-6 rounded-xl transition-all font-bold text-lg ${activeTab === 'performance' ? 'bg-emerald-500 text-[#020604] shadow-[0_0_20px_rgba(16,185,129,0.3)]' : 'text-emerald-500/50 hover:text-emerald-400 hover:bg-emerald-500/10'}`}
           >
             <BarChart3 /> Performance Marketing
           </button>
           <button 
             onClick={() => setActiveTab('development')}
-            className={`flex-1 flex items-center justify-center gap-3 py-6 rounded-xl transition-all font-bold text-lg ${activeTab === 'development' ? 'bg-emerald-500 text-[#020804] shadow-[0_0_20px_rgba(16,185,129,0.4)]' : 'text-emerald-500/50 hover:text-emerald-400 hover:bg-emerald-500/10'}`}
+            className={`flex-1 flex items-center justify-center gap-3 py-6 rounded-xl transition-all font-bold text-lg ${activeTab === 'development' ? 'bg-emerald-500 text-[#020604] shadow-[0_0_20px_rgba(16,185,129,0.3)]' : 'text-emerald-500/50 hover:text-emerald-400 hover:bg-emerald-500/10'}`}
           >
             <ShoppingCart /> Shopify Development
           </button>
@@ -542,13 +493,13 @@ export default function Portfolio() {
             {activeTab === 'performance' && (
               <motion.div key="performance" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }} className="space-y-12">
                 {PORTFOLIO_DATA.caseStudies.performance.map((study) => (
-                  <div key={study.id} className="glass-card rounded-[2rem] p-8 md:p-12 transition-all group">
+                  <div key={study.id} className="bg-[#0a1a10]/40 backdrop-blur-xl border border-emerald-500/10 hover:border-emerald-500/30 rounded-[2rem] p-8 md:p-12 transition-all shadow-xl hover:shadow-[0_10px_40px_rgba(16,185,129,0.05)]">
                     <div className="flex justify-between items-start mb-8">
                       <div>
                         <h3 className="text-4xl font-black text-white mb-2" dir="auto">{study.title}</h3>
                         <p className="text-emerald-400 font-bold text-sm uppercase tracking-wider" dir="auto">{study.subtitle}</p>
                       </div>
-                      <a href={study.url} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-white flex items-center gap-2 hover:text-[#020804] hover:bg-emerald-500 transition-all bg-[#0a1a10] px-5 py-2.5 rounded-full border border-emerald-500/30">
+                      <a href={study.url} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-white flex items-center gap-2 hover:text-[#020604] hover:bg-emerald-500 transition-all bg-[#020604] px-5 py-2.5 rounded-full border border-emerald-500/30 shadow-md">
                         View Store <ExternalLink size={16} />
                       </a>
                     </div>
@@ -557,7 +508,7 @@ export default function Portfolio() {
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
                       {study.metrics.map((m, i) => (
-                        <div key={i} className="bg-[#020804]/50 p-6 rounded-3xl border border-emerald-500/10 group-hover:border-emerald-500/30 transition-colors">
+                        <div key={i} className="bg-[#020604]/80 p-6 rounded-3xl border border-emerald-500/10 group-hover:border-emerald-500/20 transition-colors">
                           <div className="text-3xl font-black text-white mb-1" dir="auto">{m.value}</div>
                           <div className="text-sm text-emerald-500/70 font-bold" dir="auto">{m.label}</div>
                         </div>
@@ -583,14 +534,14 @@ export default function Portfolio() {
                             <div 
                               key={idx} 
                               onClick={() => setSelectedImage(img)}
-                              className="rounded-2xl overflow-hidden border border-emerald-500/20 bg-[#020804] shadow-xl group/img cursor-zoom-in relative"
+                              className="rounded-2xl overflow-hidden border border-emerald-500/20 bg-[#020604] shadow-xl group/img cursor-zoom-in relative"
                             >
                                <img 
                                  src={img} 
                                  alt={`${study.title} Verified Results ${idx + 1}`} 
-                                 className="w-full h-auto object-cover transform group-hover/img:scale-[1.05] transition-transform duration-700 opacity-90 group-hover/img:opacity-100" 
+                                 className="w-full h-auto object-cover transform group-hover/img:scale-[1.03] transition-transform duration-700 opacity-80 group-hover/img:opacity-100" 
                                />
-                               <div className="absolute inset-0 bg-emerald-900/40 opacity-0 group-hover/img:opacity-100 transition-opacity z-20 flex items-center justify-center pointer-events-none">
+                               <div className="absolute inset-0 bg-emerald-900/40 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 z-20 flex items-center justify-center pointer-events-none">
                                   <ZoomIn size={48} className="text-white drop-shadow-xl" />
                                </div>
                             </div>
@@ -607,13 +558,13 @@ export default function Portfolio() {
             {activeTab === 'development' && (
               <motion.div key="development" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }} className="space-y-12">
                 
-                <div className="glass-card rounded-[2rem] p-8 md:p-10 mb-12 shadow-[0_0_40px_rgba(16,185,129,0.15)]">
+                <div className="bg-[#0a1a10]/60 backdrop-blur-xl border border-emerald-500/20 rounded-[2rem] p-8 md:p-10 mb-12 shadow-[0_0_30px_rgba(16,185,129,0.05)]">
                   <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3" dir="auto">
-                    <Code className="text-emerald-500" size={28} /> Development Arsenal & CRO Features
+                    <Code className="text-emerald-400" size={28} /> Development Arsenal & CRO Features
                   </h3>
                   <div className="flex flex-wrap gap-3">
                     {['Sticky Add to Cart', 'Frequently Bought Together (FBT)', 'Countdown Timers', 'Free Shipping Bar', 'Optional Products in Cart', 'Interactive Sections', 'Trust Badges', 'Custom UI/UX', 'Performance Optimization'].map((feat, i) => (
-                      <span key={i} className="bg-[#0a1a10] text-emerald-100 border border-emerald-500/30 px-5 py-2.5 rounded-full text-sm font-bold" dir="auto">
+                      <span key={i} className="bg-[#020604] text-emerald-200 border border-emerald-500/30 px-5 py-2.5 rounded-full text-sm font-bold shadow-sm" dir="auto">
                         {feat}
                       </span>
                     ))}
@@ -621,7 +572,7 @@ export default function Portfolio() {
                 </div>
 
                 {PORTFOLIO_DATA.caseStudies.development.map((study) => (
-                  <div key={study.id} className="glass-card rounded-[2rem] p-8 md:p-12 flex flex-col lg:flex-row gap-12 items-center">
+                  <div key={study.id} className="bg-[#0a1a10]/40 backdrop-blur-xl border border-emerald-500/10 hover:border-emerald-500/30 rounded-[2rem] p-8 md:p-12 flex flex-col lg:flex-row gap-12 items-center transition-all shadow-xl hover:shadow-[0_10px_40px_rgba(16,185,129,0.05)]">
                     <div className="w-full lg:w-1/2">
                       <div className="flex justify-between items-center mb-8">
                         <div>
@@ -637,7 +588,7 @@ export default function Portfolio() {
                         {study.features.map((feature, i) => (
                           <div key={i} className="cursor-default">
                             <div className="text-white font-bold mb-1 flex items-center gap-2" dir="auto">
-                              <span className="text-[#020804] text-xs font-black bg-emerald-500 px-2 py-1 rounded">0{i+1}</span> {feature.title}
+                              <span className="text-[#020604] text-xs font-black bg-emerald-500 px-2 py-1 rounded">0{i+1}</span> {feature.title}
                             </div>
                             <div className="text-sm text-gray-400 pl-9 mt-1" dir="auto">{feature.desc}</div>
                           </div>
@@ -646,7 +597,7 @@ export default function Portfolio() {
                     </div>
                     
                     <div className="w-full lg:w-1/2 flex justify-center mt-10 lg:mt-0">
-                       <MobileMockup url={study.url} imagePath={study.imagePath} videoUrl={study.videoUrl} onImageClick={setSelectedImage} />
+                       <MobileMockup url={study.url} imagePath={study.imagePath} onImageClick={setSelectedImage} />
                     </div>
                   </div>
                 ))}
@@ -664,7 +615,7 @@ export default function Portfolio() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {PORTFOLIO_DATA.process.map((step, idx) => (
-            <div key={idx} className="glass-card p-8 rounded-[2rem] relative overflow-hidden group hover:-translate-y-2 transition-all">
+            <div key={idx} className="bg-[#0a1a10]/60 backdrop-blur-xl p-8 rounded-[2rem] border border-emerald-500/10 relative overflow-hidden group hover:border-emerald-500/40 hover:-translate-y-2 transition-all shadow-xl">
               <div className="absolute -right-4 -top-4 opacity-5 text-emerald-500">
                 {step.icon}
               </div>
@@ -678,7 +629,7 @@ export default function Portfolio() {
 
       {/* FOOTER CTA */}
       <section id="contact" className="py-24 px-6 border-t border-emerald-500/10 relative z-10">
-        <div className="max-w-7xl mx-auto glass-card rounded-[3rem] p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12 shadow-[0_0_60px_rgba(16,185,129,0.15)]">
+        <div className="max-w-7xl mx-auto bg-[#0a1a10]/80 backdrop-blur-xl border border-emerald-500/20 rounded-[3rem] p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12 shadow-[0_0_50px_rgba(16,185,129,0.1)]">
           <div>
             <div className="text-xs font-mono text-emerald-500 uppercase tracking-widest mb-4 font-black">Ready for 10M+ Revenue?</div>
             <h2 className="text-5xl font-black text-white leading-tight mb-4" dir="auto">Dominate Your <br/>Market. <span className="text-emerald-500">.</span></h2>
@@ -686,7 +637,7 @@ export default function Portfolio() {
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-            <a href={PORTFOLIO_DATA.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-emerald-400 to-emerald-600 text-[#020804] px-10 py-5 rounded-full font-black hover:from-emerald-300 hover:to-emerald-500 transition-all flex items-center justify-center gap-2 text-lg shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:shadow-[0_0_50px_rgba(16,185,129,0.8)] hover:-translate-y-2">
+            <a href={PORTFOLIO_DATA.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-emerald-400 to-emerald-600 text-[#020604] px-10 py-5 rounded-full font-black hover:from-emerald-300 hover:to-emerald-500 transition-all flex items-center justify-center gap-2 text-lg shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:shadow-[0_0_50px_rgba(16,185,129,0.6)] hover:-translate-y-2">
               Start Scaling Now <ArrowRight size={20} />
             </a>
           </div>
@@ -694,7 +645,7 @@ export default function Portfolio() {
       </section>
 
       {/* MINI FOOTER */}
-      <footer className="border-t border-emerald-500/10 bg-[#020804] py-8 relative z-10 mt-12">
+      <footer className="border-t border-emerald-500/10 bg-[#020604] py-8 relative z-10 mt-12">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
             <span className="font-black text-white block tracking-tight">{PORTFOLIO_DATA.header.logo}</span>
