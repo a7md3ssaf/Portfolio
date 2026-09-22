@@ -94,7 +94,6 @@ const PORTFOLIO_DATA = {
     }
   ],
   caseStudies: {
-    // 👇 تم إضافة الـ 3 كيس ستاديز الجديدة هنا 👇
     performance: [
       {
         id: "torath-perf",
@@ -110,8 +109,8 @@ const PORTFOLIO_DATA = {
         ],
         tags: ["Meta Ads", "CBO / ABO", "Creative Testing", "Audience Testing", "CRO"],
         resultsGallery: [
-          "/torath-roas.png",
-          "/torath-shopify-sales.png"
+          "/torath-ads.png",
+          "/torath-adss.png"
         ]
       },
       {
@@ -127,7 +126,8 @@ const PORTFOLIO_DATA = {
         ],
         tags: ["Meta Ads", "Arabic UX", "Corporate Gifting", "CRO"],
         resultsGallery: [
-          "/asia-results.png"
+          "/asia-dates-1.png",
+          "/asia-dates-2.png"
         ]
       },
       {
@@ -143,7 +143,7 @@ const PORTFOLIO_DATA = {
         ],
         tags: ["CBO Campaigns", "Offer Testing", "UI/UX Optimization", "Scaling"],
         resultsGallery: [
-          "/palace-results.png"
+          "/Perfume-Palace.png"
         ]
       },
       {
@@ -159,7 +159,7 @@ const PORTFOLIO_DATA = {
         ],
         tags: ["Advanced CBO", "Offer Testing", "Bundle Strategy", "Scaling"],
         resultsGallery: [
-          "/emirates-results.png"
+          "/emirates-perfumes.png"
         ]
       },
       {
@@ -169,13 +169,14 @@ const PORTFOLIO_DATA = {
         desc: "Revamped the digital marketing strategy focusing on high-converting product pages and aggressive Meta Ads scaling. Achieved significant revenue growth and maintained a highly profitable acquisition cost. (Note: Scaling operations ongoing).",
         url: "https://outlet90.com",
         metrics: [
-          { value: "E£2.5M+", label: "Total Revenue" }, // 🔴 غير الرقم الوهمي ده من هنا 🔴
-          { value: "7.2x", label: "Average ROAS" },      // 🔴 غير الرقم الوهمي ده من هنا 🔴
-          { value: "E£95", label: "Acquisition CPP" }     // 🔴 غير الرقم الوهمي ده من هنا 🔴
+          { value: "E£2.5M+", label: "Total Revenue" },
+          { value: "7.2x", label: "Average ROAS" },
+          { value: "E£95", label: "Acquisition CPP" }
         ],
         tags: ["Meta Ads", "Catalog Sales", "Retargeting", "ROAS Optimization"],
         resultsGallery: [
-          "/outlet90-results.png"
+          "/outlet90-1.jpg",
+          "/outlet90-2.jpg"
         ]
       }
     ],
@@ -205,7 +206,7 @@ const PORTFOLIO_DATA = {
           { title: "Countdown Timers", desc: "Urgency elements perfectly integrated into the UI." },
           { title: "Optional Products", desc: "Upsell items embedded directly inside the cart." }
         ],
-        imagePath: "/emirates-mockup.png"
+        imagePath: "/perfumes-mockup.png"
       },
       {
         id: "orvan-dev",
@@ -271,6 +272,20 @@ const PORTFOLIO_DATA = {
           { title: "Free Shipping Bar", desc: "Incentivizing larger pharmacy orders." }
         ],
         imagePath: "/rayan-mockup.png"
+      },
+      {
+        id: "asia-dev",
+        title: "Asia Dates",
+        subtitle: "Custom Arabic UX & Automation",
+        desc: "Designed custom Arabic UX flows with Free Shipping countdown timers and animated UI.",
+        url: "https://asia-dates.org",
+        features: [
+          { title: "Custom Bundle Builder", desc: "Interactive selection for Sukkary + Rutab" },
+          { title: "Urgency Timers", desc: "Free Shipping countdown & Trust Badges" },
+          { title: "Google Sheets Sync", desc: "Automated real-time order routing" }
+        ],
+        videoUrl: "", 
+        imagePath: "/asia-mockup.png"
       }
     ]
   }
