@@ -127,7 +127,7 @@ const PORTFOLIO_DATA = {
         ],
         tags: ["Advanced CBO", "Offer Testing", "Bundle Strategy", "Scaling"],
         resultsGallery: [
-          "/emirates-results.png"
+          "/emirates-perfumes.png"
         ]
       },
       {
@@ -318,8 +318,7 @@ const MobileMockup = ({ url, imagePath, onImageClick }: { url: string, imagePath
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState<'performance' | 'development'>('performance');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-  // إجبار المتصفح على تحميل اللون الأسود لمنع الفلاش الأبيض تماما
+  
   useEffect(() => {
     document.documentElement.style.backgroundColor = "#020604";
     document.body.style.backgroundColor = "#020604";
@@ -327,31 +326,28 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="min-h-screen relative overflow-hidden font-sans text-slate-300 selection:bg-emerald-500/40 selection:text-white" style={{ backgroundColor: '#020604' }}>
+    <div className="min-h-screen bg-[#020604] text-slate-300 selection:bg-emerald-500/40 selection:text-white relative overflow-hidden font-sans" style={{ backgroundColor: '#020604' }}>
       
       {/* 
         ====================================================
-        🔥 PURE INLINE CSS BACKGROUND PATTERN (GUARANTEED) 🔥 
+        🔥 PURE INLINE CSS BACKGROUND PATTERN (VERY VISIBLE) 🔥 
+        رفعنا شفافية الشبكة لـ 30% عشان تظهر بوضوح تام بدون ما تختفي
         ====================================================
-        هذا الكود مستحيل يتجاهله المتصفح، الشبكة هتظهر بوضوح تام بنسبة 15%
       */}
       <div 
         className="fixed inset-0 z-0 pointer-events-none"
         style={{
           backgroundColor: '#020604',
           backgroundImage: `
-            linear-gradient(rgba(16, 185, 129, 0.15) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(16, 185, 129, 0.15) 1px, transparent 1px)
+            linear-gradient(rgba(16, 185, 129, 0.3) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(16, 185, 129, 0.3) 1px, transparent 1px)
           `,
           backgroundSize: '40px 40px',
           backgroundPosition: 'center center'
         }}
       >
-        {/* إضاءات الزوايا لتعطي عمق 3D */}
-        <div className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-emerald-900/30 blur-[150px] rounded-full"></div>
-        <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-emerald-900/20 blur-[150px] rounded-full"></div>
-        
-        {/* تدرج لوني عشان الشبكة تختفي بالتدريج لتحت وماتأثرش على التيكست */}
+        <div className="absolute top-[-15%] left-[-15%] w-[50%] h-[50%] bg-emerald-900/20 blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-[-15%] right-[-15%] w-[50%] h-[50%] bg-emerald-900/10 blur-[120px] rounded-full"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020604]/80 to-[#020604]"></div>
       </div>
 
@@ -385,7 +381,7 @@ export default function Portfolio() {
         )}
       </AnimatePresence>
 
-      {/* 👇 STICKY CONTACT ME BUTTON (ANIMATED PULSE) 👇 */}
+      {/* 👇 STICKY CONTACT ME BUTTON 👇 */}
       <motion.a
         href={PORTFOLIO_DATA.contact.whatsapp}
         target="_blank"
@@ -414,7 +410,7 @@ export default function Portfolio() {
       <section className="pt-40 pb-20 px-6 max-w-7xl mx-auto relative z-10 custom-font">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            {/* 👇 ANIMATED HERO PHOTO 👇 */}
+            {/* ANIMATED HERO PHOTO */}
             <div className="mb-10 relative inline-flex">
                <motion.div 
                  animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.15, 1] }} 
@@ -451,7 +447,8 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="grid grid-cols-2 gap-6 pt-10 md:pt-0 border-t md:border-t-0 md:border-l border-emerald-500/20 md:pl-12">
+          {/* 🔴 تم إلغاء التأخير (whileInView) لضمان الظهور الفوري للكروت 🔴 */}
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0.1 }} className="grid grid-cols-2 gap-6 pt-10 md:pt-0 border-t md:border-t-0 md:border-l border-emerald-500/20 md:pl-12">
             {PORTFOLIO_DATA.stats.map((stat, idx) => (
               <div key={idx} className="bg-[#0a1a10]/50 backdrop-blur-md p-6 rounded-3xl border border-emerald-500/10 hover:border-emerald-500/30 group hover:-translate-y-1 transition-all shadow-xl">
                 <div className="text-4xl font-black text-white mb-2 group-hover:text-emerald-400 transition-colors" dir="auto">{stat.value}</div>
@@ -462,14 +459,14 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* FAST MARQUEE */}
+      {/* 🔴 تم تحسين شريط الماركيه ليكون ساطعاً وواضحاً قبل وبعد الـ Hover 🔴 */}
       <div className="border-y border-emerald-500/10 bg-[#020604]/80 backdrop-blur-md py-8 overflow-hidden relative flex z-10 custom-font">
         <div className="absolute left-0 w-32 h-full bg-gradient-to-r from-[#020604] to-transparent z-10 pointer-events-none"></div>
         <div className="absolute right-0 w-32 h-full bg-gradient-to-l from-[#020604] to-transparent z-10 pointer-events-none"></div>
         
         <div className="animate-custom-marquee flex gap-20 items-center min-w-full">
           {[...PORTFOLIO_DATA.brands, ...PORTFOLIO_DATA.brands].map((brand, i) => (
-            <a key={i} href={brand.url} target="_blank" rel="noopener noreferrer" className="text-2xl font-black text-emerald-900/60 hover:text-emerald-500 transition-colors uppercase tracking-widest whitespace-nowrap">
+            <a key={i} href={brand.url} target="_blank" rel="noopener noreferrer" className="text-3xl font-black text-emerald-400/80 hover:text-white hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(16,185,129,0.8)] transition-all duration-300 uppercase tracking-widest whitespace-nowrap drop-shadow-md">
               {brand.name}
             </a>
           ))}
@@ -564,6 +561,10 @@ export default function Portfolio() {
                                  src={img} 
                                  alt={`${study.title} Verified Results ${idx + 1}`} 
                                  className="w-full h-auto object-cover transform group-hover/img:scale-[1.03] transition-transform duration-700 opacity-80 group-hover/img:opacity-100" 
+                                 onError={(e) => { 
+                                   e.currentTarget.style.display = 'none'; 
+                                   e.currentTarget.parentElement!.innerHTML = `<div class="p-8 text-xs font-mono text-gray-500 text-center border border-dashed border-emerald-500/20 rounded-2xl">Image not found:<br/>${img}</div>`;
+                                 }}
                                />
                                <div className="absolute inset-0 bg-emerald-900/40 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 z-20 flex items-center justify-center pointer-events-none">
                                   <ZoomIn size={48} className="text-white drop-shadow-xl" />
