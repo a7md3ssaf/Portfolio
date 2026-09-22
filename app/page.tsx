@@ -78,7 +78,6 @@ const PORTFOLIO_DATA = {
     { icon: <Rocket size={24} />, title: "4. Ads & Scale", desc: "Driving qualified traffic through data-driven Meta Ads and scaling vertically." }
   ],
   caseStudies: {
-    // 🔴 ترتيب الماركتنج كما طلبت 🔴
     performance: [
       {
         id: "outlet90-perf",
@@ -128,7 +127,7 @@ const PORTFOLIO_DATA = {
         ],
         tags: ["Advanced CBO", "Offer Testing", "Bundle Strategy", "Scaling"],
         resultsGallery: [
-          "/emirates-perfumes.png"
+          "/emirates-results.png"
         ]
       },
       {
@@ -165,18 +164,18 @@ const PORTFOLIO_DATA = {
         ]
       }
     ],
-    // 🟢 ترتيب التطوير كما طلبت 🟢
     development: [
       {
         id: "rayan-dev",
         title: "New Rayan Pharmacy",
-        subtitle: "Health & Care",
-        desc: "A robust, highly-categorized pharmacy store focusing on searchability and massive product catalogs.",
+        subtitle: "Advanced Health & Care Architecture",
+        desc: "A highly-categorized, robust pharmacy store built with complex custom liquid code. Fully integrated with standard CRO features like Sticky ATC, Timers, Free Shipping Bars, Trust Badges, and Testimonials.",
         url: "https://newrayanpharmacy.com",
         features: [
-          { title: "Advanced Search & Filters", desc: "Custom Liquid coding for fast product discovery." },
-          { title: "Optional Products inside Cart", desc: "Relevant medical/cosmetic cross-sells." },
-          { title: "Free Shipping Bar", desc: "Incentivizing larger pharmacy orders." }
+          { title: "Advanced Medical Search", desc: "Custom search & filters with Collections/Subcollections and 'Shop by Medical Condition'." },
+          { title: "Dynamic Product Info Data", desc: "Custom Metaobjects to display: Description, Active Ingredients, Side Effects, Uses, and Contraindications per product." },
+          { title: "Interactive Timed Bundles", desc: "Custom bundle blocks equipped with countdown timers and the ability for the user to change products inside the bundle." },
+          { title: "Full CRO & Trust Stack", desc: "Sticky Add to Cart, Dynamic Free Shipping Bar, Trust Badges, and automated Testimonial sections." }
         ],
         imagePath: "/newrayanpharmacy.com.png"
       },
@@ -184,25 +183,27 @@ const PORTFOLIO_DATA = {
         id: "torath-dev",
         title: "Torath",
         subtitle: "Premium Heritage Store",
-        desc: "A fully custom, high-converting Arabic UX designed for seamless purchasing and premium branding.",
+        desc: "A fully custom, high-converting Arabic UX designed for seamless purchasing. Engineered with my standard CRO arsenal including Custom Code, Sticky ATC, and Testimonials.",
         url: "https://torath.co",
         features: [
-          { title: "Custom UI/UX", desc: "Tailored brand identity matching." },
-          { title: "Sticky Add to Cart", desc: "Always visible on mobile to drive conversions." },
-          { title: "Conversion Optimization", desc: "Direct checkout flows with fewer steps." }
+          { title: "Frequently Bought Together (FBT)", desc: "Custom bundle recommendations dynamically generated to maximize AOV." },
+          { title: "Urgency & Trust Mechanics", desc: "Countdown timers and Trust Badges perfectly integrated into the product page UX." },
+          { title: "Free Shipping Bar", desc: "Dynamic cart progress bar motivating users to increase cart value." },
+          { title: "Universal CRO Features", desc: "Frictionless Sticky Add to Cart (Mobile Optimized) and custom coded Testimonials." }
         ],
         imagePath: "/www.torath.co.png"
       },
       {
         id: "emirates-dev",
         title: "Emirates Perfumes",
-        subtitle: "Fragrance & Gifting",
-        desc: "Developed interactive bundle builders and dynamic variant selections to maximize AOV.",
+        subtitle: "Fragrance & Luxury Gifting",
+        desc: "Developed an elite interactive shopping experience utilizing advanced AJAX and Custom Code. Includes standard features: Sticky ATC, Timers, Trust Badges, and Free Shipping Bars.",
         url: "https://emirates-perfumes.com",
         features: [
-          { title: "Frequently Bought Together", desc: "Custom FBT sections to increase order value." },
-          { title: "Countdown Timers", desc: "Urgency elements perfectly integrated into the UI." },
-          { title: "Optional Products", desc: "Upsell items embedded directly inside the cart." }
+          { title: "Optional Packaging Upsell", desc: "Custom checkbox toggle in Cart Drawer & Cart Page that dynamically adds +50 EGP to the total if selected." },
+          { title: "Frequently Bought Together", desc: "Custom FBT sections matching fragrances to increase order value effortlessly." },
+          { title: "Urgency Elements", desc: "Countdown timers and Trust Badges natively designed into the theme." },
+          { title: "Frictionless Checkout", desc: "Sticky Add to Cart on mobile, custom Testimonials, and Free Shipping progress bars." }
         ],
         imagePath: "/emirates-perfumes.com.png"
       },
@@ -210,12 +211,12 @@ const PORTFOLIO_DATA = {
         id: "orvan-dev",
         title: "Orvan Perfumes",
         subtitle: "Luxury Fragrances",
-        desc: "A visually rich, fast-loading store prioritizing product aesthetics and smooth mobile experience.",
+        desc: "A visually rich, fast-loading store prioritizing product aesthetics, built entirely with custom optimization techniques and mandatory CRO structures.",
         url: "https://orvan-perfumes.com",
         features: [
-          { title: "Interactive Sections", desc: "Smooth animations and custom product galleries." },
-          { title: "Trust Badges", desc: "Strategically placed to build instant credibility." },
-          { title: "Performance Optimization", desc: "Lazy loading and script optimization for speed." }
+          { title: "Universal CRO Features", desc: "Always-visible Sticky ATC, Free Shipping Bars, Countdown Timers, and Trust Badges." },
+          { title: "Interactive Sections", desc: "Smooth animations and custom product galleries without sacrificing load speed." },
+          { title: "Social Proof", desc: "Custom Testimonial sliders perfectly matched to the luxury identity." }
         ],
         imagePath: "/orvan-perfumes.com.png"
       },
@@ -223,12 +224,12 @@ const PORTFOLIO_DATA = {
         id: "freezy-dev",
         title: "Freezy Bites",
         subtitle: "FMCG / Snacks",
-        desc: "A vibrant, engaging store designed for quick impulse buys and bulk orders.",
+        desc: "A vibrant, engaging store designed for quick impulse buys. Implemented the standard high-conversion suite: Custom Code, Sticky ATC, and Trust Elements.",
         url: "https://freezybites.store",
         features: [
-          { title: "Free Shipping Bar", desc: "Dynamic progress bar to encourage higher cart totals." },
-          { title: "Sticky Add to Cart", desc: "Frictionless mobile purchasing." },
-          { title: "Custom Cart Drawer", desc: "AJAX-powered cart with integrated upsells." }
+          { title: "Custom Cart Drawer", desc: "AJAX-powered sliding cart with integrated upsells and dynamic Free Shipping Bar." },
+          { title: "Frictionless Purchasing", desc: "Sticky Add to Cart, prominent Trust Badges, and customized Testimonials." },
+          { title: "Urgency Timers", desc: "Strategic countdown timers on specific snack bundles to drive immediate action." }
         ],
         imagePath: "/freezybites.store.png"
       },
@@ -236,7 +237,7 @@ const PORTFOLIO_DATA = {
         id: "oplus-dev",
         title: "Oplus Coffee",
         subtitle: "Premium Coffee Roasters",
-        desc: "An immersive e-commerce experience focusing on coffee origin stories and subscription-style bundles.",
+        desc: "An immersive e-commerce experience focusing on coffee origin stories, supported by my core Shopify development framework for maximum CVR.",
         url: "https://opluscoffee.com/",
         features: [
           { title: "Tailored UI/UX", desc: "Dark, premium aesthetic perfectly matched to the brand." },
@@ -249,14 +250,27 @@ const PORTFOLIO_DATA = {
         id: "asia-dev",
         title: "Asia Dates",
         subtitle: "Custom Arabic UX & Automation",
-        desc: "Designed custom Arabic UX flows with Free Shipping countdown timers and animated UI.",
+        desc: "Designed custom Arabic UX flows with fully integrated automation and standard conversion-boosting tools.",
         url: "https://asia-dates.org",
         features: [
-          { title: "Custom Bundle Builder", desc: "Interactive selection for Sukkary + Rutab" },
-          { title: "Urgency Timers", desc: "Free Shipping countdown & Trust Badges" },
-          { title: "Google Sheets Sync", desc: "Automated real-time order routing" }
+          { title: "Custom Bundle Builder", desc: "Interactive selection layout for mixing Sukkary + Rutab dates." },
+          { title: "Essential CRO Suite", desc: "Free Shipping Countdown Timers, Sticky Add to Cart, Trust Badges, and Testimonials." },
+          { title: "Google Sheets Sync", desc: "Automated real-time order routing using zero-latency backend code." }
         ],
         imagePath: "/asia-dates.org.png"
+      },
+      {
+        id: "artexpo-dev",
+        title: "Art Expo",
+        subtitle: "Art & Decor",
+        desc: "A minimalist gallery-style store that lets the artwork stand out, built for lightning-fast speeds and optimal mobile conversions.",
+        url: "https://artexpo.art",
+        features: [
+          { title: "Performance Optimization", desc: "Handling high-res imagery without sacrificing speed." },
+          { title: "Standardized CRO", desc: "Sticky Add to Cart, Free Shipping Bar, Trust Badges, and custom Testimonial sections." },
+          { title: "Interactive Sections", desc: "Custom grid layouts and hover effects built with pure CSS." }
+        ],
+        imagePath: "/artexpo-mockup.png"
       }
     ]
   }
@@ -304,8 +318,8 @@ const MobileMockup = ({ url, imagePath, onImageClick }: { url: string, imagePath
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState<'performance' | 'development'>('performance');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  
-  // Force strict background color instantly to prevent white flash
+
+  // إجبار المتصفح على تحميل اللون الأسود لمنع الفلاش الأبيض تماما
   useEffect(() => {
     document.documentElement.style.backgroundColor = "#020604";
     document.body.style.backgroundColor = "#020604";
@@ -313,30 +327,40 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#020604] text-slate-300 selection:bg-emerald-500/40 selection:text-white relative overflow-hidden font-sans" style={{ backgroundColor: '#020604' }}>
+    <div className="min-h-screen relative overflow-hidden font-sans text-slate-300 selection:bg-emerald-500/40 selection:text-white" style={{ backgroundColor: '#020604' }}>
       
-      {/* 👇 BULLETPROOF TAILWIND GRID PATTERN (VISIBLE & LUXURY) 👇 */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        {/* Subtle Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b98115_1px,transparent_1px),linear-gradient(to_bottom,#10b98115_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_60%,transparent_100%)]"></div>
-        {/* Deep Corner Glows */}
-        <div className="absolute top-[-15%] left-[-15%] w-[50%] h-[50%] bg-emerald-900/20 blur-[120px] rounded-full"></div>
-        <div className="absolute bottom-[-15%] right-[-15%] w-[50%] h-[50%] bg-emerald-900/10 blur-[120px] rounded-full"></div>
+      {/* 
+        ====================================================
+        🔥 PURE INLINE CSS BACKGROUND PATTERN (GUARANTEED) 🔥 
+        ====================================================
+        هذا الكود مستحيل يتجاهله المتصفح، الشبكة هتظهر بوضوح تام بنسبة 15%
+      */}
+      <div 
+        className="fixed inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundColor: '#020604',
+          backgroundImage: `
+            linear-gradient(rgba(16, 185, 129, 0.15) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(16, 185, 129, 0.15) 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px',
+          backgroundPosition: 'center center'
+        }}
+      >
+        {/* إضاءات الزوايا لتعطي عمق 3D */}
+        <div className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-emerald-900/30 blur-[150px] rounded-full"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-emerald-900/20 blur-[150px] rounded-full"></div>
+        
+        {/* تدرج لوني عشان الشبكة تختفي بالتدريج لتحت وماتأثرش على التيكست */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020604]/80 to-[#020604]"></div>
       </div>
 
-      {/* INJECT ANIMATION KEYFRAMES SAFELY */}
       <style dangerouslySetInnerHTML={{__html: `
-        @keyframes customMarquee {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-custom-marquee {
-          animation: customMarquee 35s linear infinite;
-          width: max-content;
-        }
-        .animate-custom-marquee:hover {
-          animation-play-state: paused;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+        .custom-font { font-family: system-ui, -apple-system, sans-serif, 'Cairo'; }
+        @keyframes customMarquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+        .animate-custom-marquee { animation: customMarquee 35s linear infinite; width: max-content; }
+        .animate-custom-marquee:hover { animation-play-state: paused; }
         html { scroll-behavior: smooth; }
       `}} />
 
@@ -348,14 +372,14 @@ export default function Portfolio() {
             className="fixed inset-0 z-[100] flex items-center justify-center bg-[#020604]/95 backdrop-blur-xl p-4 cursor-zoom-out"
             onClick={() => setSelectedImage(null)}
           >
-            <button className="absolute top-6 right-6 text-emerald-500 hover:text-white transition-colors bg-[#0a1a10] p-3 rounded-full border border-emerald-500/30 shadow-2xl">
+            <button className="absolute top-6 right-6 text-emerald-500 hover:text-white transition-colors bg-[#0a1a10] p-3 rounded-full border border-emerald-500/30 shadow-2xl z-[110]">
               <X size={24} />
             </button>
             <motion.img 
               initial={{ scale: 0.9, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.9, opacity: 0, y: 20 }} transition={{ type: "spring", damping: 25, stiffness: 300 }}
               src={selectedImage} 
               alt="Enlarged view" 
-              className="max-w-full max-h-[90vh] rounded-2xl border border-emerald-500/30 shadow-[0_0_80px_rgba(16,185,129,0.2)] object-contain"
+              className="max-w-full max-h-[90vh] rounded-2xl border border-emerald-500/30 shadow-[0_0_80px_rgba(16,185,129,0.2)] object-contain relative z-[105]"
             />
           </motion.div>
         )}
@@ -374,7 +398,7 @@ export default function Portfolio() {
       </motion.a>
 
       {/* NAV */}
-      <nav className="fixed top-0 w-full z-50 bg-[#020604]/80 backdrop-blur-xl border-b border-emerald-500/10">
+      <nav className="fixed top-0 w-full z-50 bg-[#020604]/80 backdrop-blur-xl border-b border-emerald-500/10 custom-font">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div>
             <span className="text-xl font-black text-white block tracking-tight">{PORTFOLIO_DATA.header.logo}</span>
@@ -387,7 +411,7 @@ export default function Portfolio() {
       </nav>
 
       {/* HERO */}
-      <section className="pt-40 pb-20 px-6 max-w-7xl mx-auto relative z-10">
+      <section className="pt-40 pb-20 px-6 max-w-7xl mx-auto relative z-10 custom-font">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             {/* 👇 ANIMATED HERO PHOTO 👇 */}
@@ -439,7 +463,7 @@ export default function Portfolio() {
       </section>
 
       {/* FAST MARQUEE */}
-      <div className="border-y border-emerald-500/10 bg-[#020604]/80 backdrop-blur-md py-8 overflow-hidden relative flex z-10">
+      <div className="border-y border-emerald-500/10 bg-[#020604]/80 backdrop-blur-md py-8 overflow-hidden relative flex z-10 custom-font">
         <div className="absolute left-0 w-32 h-full bg-gradient-to-r from-[#020604] to-transparent z-10 pointer-events-none"></div>
         <div className="absolute right-0 w-32 h-full bg-gradient-to-l from-[#020604] to-transparent z-10 pointer-events-none"></div>
         
@@ -453,7 +477,7 @@ export default function Portfolio() {
       </div>
 
       {/* SERVICES SECTION */}
-      <section className="py-24 px-6 max-w-7xl mx-auto relative z-10">
+      <section className="py-24 px-6 max-w-7xl mx-auto relative z-10 custom-font">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4" dir="auto">The Ecosystem</h2>
           <p className="text-emerald-500 font-bold tracking-widest uppercase text-sm" dir="auto">Luxury Tech & Elite Marketing</p>
@@ -470,7 +494,7 @@ export default function Portfolio() {
       </section>
 
       {/* TABS SECTION */}
-      <section id="work" className="py-24 px-6 max-w-7xl mx-auto relative z-10">
+      <section id="work" className="py-24 px-6 max-w-7xl mx-auto relative z-10 custom-font">
         <div className="flex flex-col md:flex-row gap-4 mb-16 bg-[#0a1a10] p-2 rounded-2xl border border-emerald-500/20 shadow-[0_0_30px_rgba(16,185,129,0.05)]">
           <button 
             onClick={() => setActiveTab('performance')}
@@ -563,7 +587,7 @@ export default function Portfolio() {
                     <Code className="text-emerald-400" size={28} /> Development Arsenal & CRO Features
                   </h3>
                   <div className="flex flex-wrap gap-3">
-                    {['Sticky Add to Cart', 'Frequently Bought Together (FBT)', 'Countdown Timers', 'Free Shipping Bar', 'Optional Products in Cart', 'Interactive Sections', 'Trust Badges', 'Custom UI/UX', 'Performance Optimization'].map((feat, i) => (
+                    {['Sticky Add to Cart', 'Frequently Bought Together (FBT)', 'Countdown Timers', 'Free Shipping Bar', 'Optional Products in Cart', 'Interactive Sections', 'Trust Badges', 'Custom UI/UX', 'Performance Optimization', 'Testimonials'].map((feat, i) => (
                       <span key={i} className="bg-[#020604] text-emerald-200 border border-emerald-500/30 px-5 py-2.5 rounded-full text-sm font-bold shadow-sm" dir="auto">
                         {feat}
                       </span>
@@ -608,7 +632,7 @@ export default function Portfolio() {
       </section>
 
       {/* THE PROCESS SECTION */}
-      <section className="py-24 px-6 max-w-7xl mx-auto border-t border-emerald-500/10 relative z-10">
+      <section className="py-24 px-6 max-w-7xl mx-auto border-t border-emerald-500/10 relative z-10 custom-font">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4" dir="auto">Execution Matrix</h2>
           <p className="text-emerald-400 font-medium tracking-widest uppercase text-sm" dir="auto">A proven framework for consistent growth</p>
@@ -628,7 +652,7 @@ export default function Portfolio() {
       </section>
 
       {/* FOOTER CTA */}
-      <section id="contact" className="py-24 px-6 border-t border-emerald-500/10 relative z-10">
+      <section id="contact" className="py-24 px-6 border-t border-emerald-500/10 relative z-10 custom-font">
         <div className="max-w-7xl mx-auto bg-[#0a1a10]/80 backdrop-blur-xl border border-emerald-500/20 rounded-[3rem] p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12 shadow-[0_0_50px_rgba(16,185,129,0.1)]">
           <div>
             <div className="text-xs font-mono text-emerald-500 uppercase tracking-widest mb-4 font-black">Ready for 10M+ Revenue?</div>
@@ -645,7 +669,7 @@ export default function Portfolio() {
       </section>
 
       {/* MINI FOOTER */}
-      <footer className="border-t border-emerald-500/10 bg-[#020604] py-8 relative z-10 mt-12">
+      <footer className="border-t border-emerald-500/10 bg-[#020604] py-8 relative z-10 mt-12 custom-font">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
             <span className="font-black text-white block tracking-tight">{PORTFOLIO_DATA.header.logo}</span>
