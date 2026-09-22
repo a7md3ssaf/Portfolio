@@ -49,33 +49,34 @@ const PORTFOLIO_DATA = {
     { value: "65x", label: "Peak ROAS Achieved" },
     { value: "100%", label: "Conversion Focused" }
   ],
+  // تم حل مشكلة الأيقونات هنا بوضع المقاسات بشكل مباشر (بدون Size prop)
   services: [
     {
-      icon: <Code className="text-emerald-400" size={32} />,
+      icon: <Code className="text-emerald-400 w-6 h-6 md:w-8 md:h-8" />,
       title: "Custom Shopify Dev",
       desc: "Building highly tailored stores using Custom Liquid, CSS, and JS. I don't just set up themes; I code seamless user journeys matched with your brand identity."
     },
     {
-      icon: <Zap className="text-emerald-400" size={32} />,
+      icon: <Zap className="text-emerald-400 w-6 h-6 md:w-8 md:h-8" />,
       title: "Conversion (CRO)",
       desc: "Optimizing the full funnel from landing to checkout. Implementing Sticky ATCs, FBTs, Free Shipping Bars, and Trust Badges to push CVR."
     },
     {
-      icon: <TrendingUp className="text-emerald-400" size={32} />,
+      icon: <TrendingUp className="text-emerald-400 w-6 h-6 md:w-8 md:h-8" />,
       title: "Performance Marketing",
       desc: "Aggressive Meta Ads scaling with advanced CBO/ABO structures, dynamic creatives, and hyper-targeted audience testing."
     },
     {
-      icon: <Settings className="text-emerald-400" size={32} />,
+      icon: <Settings className="text-emerald-400 w-6 h-6 md:w-8 md:h-8" />,
       title: "Performance Optimization",
       desc: "Speed optimization and Zero-latency integrations connecting Shopify to backend workflows for a fast, friction-free experience."
     }
   ],
   process: [
-    { icon: <Search size={24} />, title: "1. Deep Audit", desc: "We analyze your store's UX, current ad accounts, and backend data to find leaks." },
-    { icon: <LayoutTemplate size={24} />, title: "2. Custom UI/UX", desc: "Designing and coding tailored sections that fit your brand and simplify the user journey." },
-    { icon: <Zap size={24} />, title: "3. CRO Features", desc: "Deploying FBT, Sticky Buy Buttons, and urgency timers to maximize order value." },
-    { icon: <Rocket size={24} />, title: "4. Ads & Scale", desc: "Driving qualified traffic through data-driven Meta Ads and scaling vertically." }
+    { icon: <Search className="w-5 h-5 md:w-6 md:h-6" />, title: "1. Deep Audit", desc: "We analyze your store's UX, current ad accounts, and backend data to find leaks." },
+    { icon: <LayoutTemplate className="w-5 h-5 md:w-6 md:h-6" />, title: "2. Custom UI/UX", desc: "Designing and coding tailored sections that fit your brand and simplify the user journey." },
+    { icon: <Zap className="w-5 h-5 md:w-6 md:h-6" />, title: "3. CRO Features", desc: "Deploying FBT, Sticky Buy Buttons, and urgency timers to maximize order value." },
+    { icon: <Rocket className="w-5 h-5 md:w-6 md:h-6" />, title: "4. Ads & Scale", desc: "Driving qualified traffic through data-driven Meta Ads and scaling vertically." }
   ],
   caseStudies: {
     performance: [
@@ -127,7 +128,7 @@ const PORTFOLIO_DATA = {
         ],
         tags: ["Advanced CBO", "Offer Testing", "Bundle Strategy", "Scaling"],
         resultsGallery: [
-          "/emirates-perfumes.png"
+          "/emirates-results.png"
         ]
       },
       {
@@ -475,7 +476,7 @@ export default function Portfolio() {
           {PORTFOLIO_DATA.services.map((service, idx) => (
             <div key={idx} className="bg-[#0a1a10]/60 backdrop-blur-xl p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border border-emerald-500/10 hover:border-emerald-500/40 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)] hover:-translate-y-1 md:hover:-translate-y-2 transition-all group">
               <div className="mb-4 md:mb-6 bg-emerald-500/10 w-fit p-3 md:p-4 rounded-xl md:rounded-2xl border border-emerald-500/20 group-hover:scale-110 transition-transform">
-                {React.cloneElement(service.icon as React.ReactElement, { className: "w-6 h-6 md:w-8 md:h-8 text-emerald-400" })}
+                {service.icon}
               </div>
               <h3 className="text-lg md:text-xl font-bold text-white mb-2 md:mb-3" dir="auto">{service.title}</h3>
               <p className="text-xs md:text-sm text-gray-400 leading-relaxed" dir="auto">{service.desc}</p>
@@ -649,7 +650,7 @@ export default function Portfolio() {
                 {step.icon}
               </div>
               <div className="text-emerald-400 mb-4 md:mb-6 bg-emerald-500/10 w-fit p-3 md:p-4 rounded-xl md:rounded-2xl border border-emerald-500/20 group-hover:scale-110 transition-transform">
-                 {React.cloneElement(step.icon as React.ReactElement, { className: "w-5 h-5 md:w-6 md:h-6" })}
+                 {step.icon}
               </div>
               <h3 className="text-lg md:text-xl font-bold text-white mb-2 md:mb-3" dir="auto">{step.title}</h3>
               <p className="text-xs md:text-sm text-gray-400 leading-relaxed" dir="auto">{step.desc}</p>
