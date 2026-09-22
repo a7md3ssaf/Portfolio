@@ -160,7 +160,8 @@ const PORTFOLIO_DATA = {
         ],
         tags: ["Advanced CBO", "Offer Testing", "Bundle Strategy", "Scaling"],
         resultsGallery: [
-          "/emirates-perfumes.png"
+          "/emirates-perfumes.png",
+          "/perfumes-mockup.png"
         ]
       }
     ],
@@ -176,8 +177,8 @@ const PORTFOLIO_DATA = {
           { title: "Sticky Add to Cart", desc: "Always visible on mobile to drive conversions." },
           { title: "Conversion Optimization", desc: "Direct checkout flows with fewer steps." }
         ],
-        videoUrl: "/torath-demo.mp4",
-        imagePath: "/torath-mockup.png"
+        videoUrl: "", // تم تفريغ الفيديو ليتم عرض الصورة
+        imagePath: "/www.torath.co.png"
       },
       {
         id: "emirates-dev",
@@ -255,7 +256,8 @@ const PORTFOLIO_DATA = {
           { title: "Optional Products inside Cart", desc: "Relevant medical/cosmetic cross-sells." },
           { title: "Free Shipping Bar", desc: "Incentivizing larger pharmacy orders." }
         ],
-        imagePath: "/rayan-mockup.png"
+        videoUrl: "", // تجهيزاً لأي فيديو في المستقبل
+        imagePath: "/newrayanpharmacy.com.png"
       },
       {
         id: "asia-dev",
@@ -268,6 +270,7 @@ const PORTFOLIO_DATA = {
           { title: "Urgency Timers", desc: "Free Shipping countdown & Trust Badges" },
           { title: "Google Sheets Sync", desc: "Automated real-time order routing" }
         ],
+        videoUrl: "", 
         imagePath: "/asia-mockup.png"
       }
     ]
