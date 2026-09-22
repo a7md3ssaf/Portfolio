@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   BarChart3, ShoppingCart, 
-  Play, ArrowRight, MessageCircle, 
+  ArrowRight, MessageCircle, 
   CheckCircle2, ExternalLink, Image as ImageIcon,
   Zap, Code, TrendingUp, Search, Settings, Rocket, LayoutTemplate, X, ZoomIn
 } from "lucide-react";
@@ -487,7 +487,6 @@ export default function Portfolio() {
       {/* TABS SECTION */}
       <section id="work" className="py-16 md:py-24 px-4 md:px-6 max-w-7xl mx-auto relative z-10 custom-font">
         
-        {/* 👇 INSTRUCTIONAL MESSAGE FOR TABS 👇 */}
         <motion.div 
           initial={{ opacity: 0, y: -10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           className="text-center mb-6"
@@ -549,7 +548,6 @@ export default function Portfolio() {
                       ))}
                     </div>
 
-                    {/* LIGHTBOX FOR RESULTS */}
                     {study.resultsGallery && study.resultsGallery.length > 0 && (
                       <div className="mt-8 md:mt-12">
                         <div className="text-xs md:text-sm font-bold text-white border-b border-emerald-500/20 pb-3 md:pb-4 mb-4 md:mb-6 flex items-center gap-2">
@@ -666,7 +664,7 @@ export default function Portfolio() {
           <div>
             <div className="text-[10px] md:text-xs font-mono text-emerald-500 uppercase tracking-widest mb-3 md:mb-4 font-black">Ready for 10M+ Revenue?</div>
             <h2 className="text-3xl md:text-5xl font-black text-white leading-tight mb-3 md:mb-4" dir="auto">Dominate Your <br className="hidden md:block"/>Market. <span className="text-emerald-500">.</span></h2>
-            <p className="text-sm md:text-lg text-gray-300 max-w-md mx-auto md:mx-0 font-medium" dir="auto">I only work with serious brands ready to scale. If you want high-converting code and aggressive Meta Ads, let's talk.</p>
+            <p className="text-sm md:text-lg text-gray-300 max-w-md mx-auto md:mx-0 font-medium" dir="auto">I only work with serious brands ready to scale. If you want high-converting code and aggressive Meta Ads, let&apos;s talk.</p>
           </div>
           
           <div className="flex w-full md:w-auto justify-center mt-4 md:mt-0">
