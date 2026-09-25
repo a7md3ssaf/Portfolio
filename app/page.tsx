@@ -45,7 +45,7 @@ const PORTFOLIO_DATA = {
   ],
   stats: [
     { value: "10+", label: "Brands Scaled" },
-    { value: "11M+", label: "Tracked Revenue (EGP)" },
+    { value: "50M+", label: "Tracked Revenue (EGP)" },
     { value: "65x", label: "Peak ROAS Achieved" },
     { value: "100%", label: "Conversion Focused" }
   ],
